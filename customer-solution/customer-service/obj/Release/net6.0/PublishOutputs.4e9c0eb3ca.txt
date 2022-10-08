@@ -1,0 +1,11 @@
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/customer-service
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/appsettings.Development.json
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/appsettings.json
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/customer-service.dll
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/customer-service.deps.json
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/customer-service.runtimeconfig.json
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/customer-service.pdb
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/Microsoft.OpenApi.dll
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/Swashbuckle.AspNetCore.Swagger.dll
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/nicolaiskat/eksamen4/customer-service/bin/Release/net6.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll

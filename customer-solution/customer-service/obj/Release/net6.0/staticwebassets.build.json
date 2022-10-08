@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "twd8U5HcmJu0IKoNHErpDG2Bhlc0cuDfW25jT6khabk=",
+  "Source": "customer-service",
+  "BasePath": "_content/customer-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
