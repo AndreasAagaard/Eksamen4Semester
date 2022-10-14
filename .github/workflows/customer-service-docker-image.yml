@@ -1,12 +1,10 @@
 name: Customer Service Solution Build
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
     paths:
       - customer-solution/customer-service/**
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
 
