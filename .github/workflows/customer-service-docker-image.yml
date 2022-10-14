@@ -3,6 +3,8 @@ name: Customer Service Solution Build
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - customer-solution/customer-service/**
   pull_request:
     branches: [ "main" ]
 
@@ -23,7 +25,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd ./customer-solution/customer-service
-        docker build . --file eksamen-customer-svc/Dockerfile --tag nicolaiskat/eksamen-customer-svc:latest
+        docker build . --file eksamen-customer-svc/Dockerfile --tag ${DOCKER_USER}/eksamen-customer-svc:latest
     - name: Push Docker image to Docker Hub
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
