@@ -1,6 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+  <AssemblyVersion>1.0.1.1</AssemblyVersion>
+ <FileVersion>1.0.1.1</FileVersion>
+<InformationalVersion>1.0.0</InformationalVersion>
+<Description>
+  1.0.0 Updated with new Semantics
+  0.9.0 Booking Service Added to App
+</Description>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>

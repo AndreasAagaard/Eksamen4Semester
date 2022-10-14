@@ -2,7 +2,6 @@ namespace customer_service.Models;
 
 public class Customer
 {
-    public int CustomerId;
 
     public Customer(string name, string mobile, string email)
     {
@@ -11,6 +10,7 @@ public class Customer
         Email = email;
     }
 
+    public int? CustomerId;
     public string Name { get; set; }
     public string Mobile { get; set; }
     public string Email { get; set; }

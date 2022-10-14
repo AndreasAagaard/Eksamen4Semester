@@ -1,4 +1,5 @@
-using customer_service.Services;
+using mongo_service.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,15 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auction Customer Service", Version = "v0.1.0" });
-});
+builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<CustomerService>();
+builder.Services.AddSingleton<ItemService>();
 
 var app = builder.Build();
 
-//Using swagger both in Development and Production
+// Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
 

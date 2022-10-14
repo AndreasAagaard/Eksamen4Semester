@@ -1,0 +1,7 @@
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.csproj.AssemblyReference.cache
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.AssemblyInfoInputs.cache
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.AssemblyInfo.cs
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.csproj.CoreCompileInputs.cache
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.MvcApplicationPartsAssemblyInfo.cs
+/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/obj/Debug/net6.0/mongo-service.MvcApplicationPartsAssemblyInfo.cache
