@@ -6,12 +6,12 @@ public class ItemServiceService
     private int id = 1;
     public List<Item> Items = new List<Item>();
 
-    // private ILogger<ItemServiceService> _logger;
+    private ILogger<ItemServiceService> _logger;
 
-    // ItemServiceService(ILogger<ItemServiceService> logger)
-    // {
-    //     _logger = logger;
-    // }
+    public ItemServiceService(ILogger<ItemServiceService> logger)
+    {
+        _logger = logger;
+    }
 
     public string createItems(Item item)
     {
@@ -19,12 +19,19 @@ public class ItemServiceService
         {
             item.ItemId = id++;
             Items.Add(item);
-            // _logger.LogInformation("{item.Name} added succesfully");
+            _logger.LogInformation("New item with Id: " + item.ItemId +
+                                        " created at timestamp " + DateTime.Now);
             return $"{item.Name} added succesfully";
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            return $"{e}";
+            LogError(ex);
+            return "Item not created";
         }
+    }
+
+    private void LogError(Exception ex) 
+    {
+        _logger.LogError(ex.Message);
     }
 }

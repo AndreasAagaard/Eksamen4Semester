@@ -3,7 +3,7 @@ using customer_service.Models;
 
 public class CustomerService
 {
-    public int Id = 1;
+    public static int Id = 1;
     public List<Customer> Customers = new();
     private readonly ILogger<CustomerService> _logger;
     public CustomerService(ILogger<CustomerService> logger)
@@ -11,7 +11,7 @@ public class CustomerService
        _logger = logger;
     }
 
-    public string CreateCustomer(Customer customer) 
+    public Customer? CreateCustomer(Customer customer) 
     {
         try 
         {
@@ -19,17 +19,23 @@ public class CustomerService
             Customers.Add(customer);
             _logger.LogInformation("New customer with Id: " + customer.CustomerId +
                                         " created at timestamp " + DateTime.Now);
-            return "Customer create with Id: " + customer.CustomerId;
         }
         catch (Exception ex) 
         {
             LogError(ex);
-            return "Customer not created";
+            return null;
         }
+
+        return customer;
     }
 
     private void LogError(Exception ex) 
     {
         _logger.LogError(ex.Message);
+    }
+
+    public static void ResetCounter() 
+    {
+        Id = 1;
     }
 }

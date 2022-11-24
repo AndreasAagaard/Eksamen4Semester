@@ -18,8 +18,29 @@ public class CustomerServiceController : ControllerBase
     }
 
     [HttpPost("createcustomer", Name = "CreateCustomer")]
-    public string Post(Customer customer)
+    public Customer? PostCustomer(Customer customer)
     {
-        return _customerService.CreateCustomer(customer);
+        try
+        {
+            var res = _customerService.CreateCustomer(customer);
+
+            if (res == null)
+            {
+                return null;
+            }
+
+            return res;
+        }
+        catch (Exception ex)
+        {
+            LogError(ex);
+            return null;
+        }
+    }
+
+
+    private void LogError(Exception ex) 
+    {
+        _logger.LogError(ex.Message);
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nicolaiskat/eksamen4/customer-service-test/customer-service-test.csproj": {}
+    "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj": {}
   },
   "projects": {
-    "/Users/nicolaiskat/eksamen4/customer-service-test/customer-service-test.csproj": {
+    "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicolaiskat/eksamen4/customer-service-test/customer-service-test.csproj",
+        "projectUniqueName": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
         "projectName": "customer-service-test",
-        "projectPath": "/Users/nicolaiskat/eksamen4/customer-service-test/customer-service-test.csproj",
+        "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
         "packagesPath": "/Users/nicolaiskat/.nuget/packages/",
-        "outputPath": "/Users/nicolaiskat/eksamen4/customer-service-test/obj/",
+        "outputPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nicolaiskat/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/nicolaiskat/eksamen4/customer-service/customer-service.csproj": {
-                "projectPath": "/Users/nicolaiskat/eksamen4/customer-service/customer-service.csproj"
+              "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
+                "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj"
               }
             }
           }
@@ -61,6 +61,10 @@
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "moq": {
+              "target": "Package",
+              "version": "[4.18.2, )"
             }
           },
           "imports": [
@@ -82,14 +86,14 @@
         }
       }
     },
-    "/Users/nicolaiskat/eksamen4/customer-service/customer-service.csproj": {
+    "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicolaiskat/eksamen4/customer-service/customer-service.csproj",
+        "projectUniqueName": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
         "projectName": "customer-service",
-        "projectPath": "/Users/nicolaiskat/eksamen4/customer-service/customer-service.csproj",
+        "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
         "packagesPath": "/Users/nicolaiskat/.nuget/packages/",
-        "outputPath": "/Users/nicolaiskat/eksamen4/customer-service/obj/",
+        "outputPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nicolaiskat/.nuget/NuGet/NuGet.Config"
