@@ -4,7 +4,7 @@ using customer_service.Models;
 public class CustomerService
 {
     public static int Id = 1;
-    private List<Customer> Customers = new();
+    public List<Customer> Customers = new();
     private readonly ILogger<CustomerService> _logger;
     public CustomerService(ILogger<CustomerService> logger)
     {
@@ -12,7 +12,7 @@ public class CustomerService
         SeedData();
     }
 
-    public List<Customer> GetCustomer()
+    public List<Customer> GetCustomers()
     {
         return Customers;
     }

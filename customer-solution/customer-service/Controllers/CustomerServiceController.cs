@@ -20,7 +20,7 @@ public class CustomerServiceController : ControllerBase
     [HttpGet]
     public List<Customer> Get()
     {
-        return _customerService.GetCustomer();
+        return _customerService.GetCustomers();
     }
 
 
