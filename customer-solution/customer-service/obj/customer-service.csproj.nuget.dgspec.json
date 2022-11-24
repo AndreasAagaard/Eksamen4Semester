@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {}
+    "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {}
   },
   "projects": {
-    "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
+    "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
+        "projectUniqueName": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
         "projectName": "customer-service",
-        "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
-        "packagesPath": "/Users/nicolaiskat/.nuget/packages/",
-        "outputPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/obj/",
+        "projectPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
+        "packagesPath": "/Users/linekrogshavejorgensen/.nuget/packages/",
+        "outputPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nicolaiskat/.nuget/NuGet/NuGet.Config"
+          "/Users/linekrogshavejorgensen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -49,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -61,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

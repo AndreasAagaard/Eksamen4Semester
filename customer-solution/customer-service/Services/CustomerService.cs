@@ -8,12 +8,17 @@ public class CustomerService
     private readonly ILogger<CustomerService> _logger;
     public CustomerService(ILogger<CustomerService> logger)
     {
-       _logger = logger;
+        _logger = logger;
     }
 
-    public string CreateCustomer(Customer customer) 
+    public List<Customer> GetCustomer()
     {
-        try 
+        return Customers;
+    }
+
+    public string CreateCustomer(Customer customer)
+    {
+        try
         {
             customer.CustomerId = Id++;
             Customers.Add(customer);
@@ -21,14 +26,14 @@ public class CustomerService
                                         " created at timestamp " + DateTime.Now);
             return "Customer create with Id: " + customer.CustomerId;
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             LogError(ex);
             return "Customer not created";
         }
     }
 
-    private void LogError(Exception ex) 
+    private void LogError(Exception ex)
     {
         _logger.LogError(ex.Message);
     }

@@ -8,7 +8,7 @@ namespace item_service.Controllers;
 [Route("[controller]")]
 public class ItemController : ControllerBase
 {
-    
+
 
     private readonly ILogger<ItemController> _logger;
     private readonly ItemServiceService _service;
@@ -17,6 +17,12 @@ public class ItemController : ControllerBase
     {
         _logger = logger;
         _service = service;
+    }
+
+    [HttpGet]
+    public List<Item> Get()
+    {
+        return _service.GetItem();
     }
 
     [HttpPost("createItem", Name = "GetItem")]

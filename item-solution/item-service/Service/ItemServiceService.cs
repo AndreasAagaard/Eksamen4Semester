@@ -13,6 +13,11 @@ public class ItemServiceService
     //     _logger = logger;
     // }
 
+    public List<Item> GetItem()
+    {
+        return Items;
+    }
+
     public string createItems(Item item)
     {
         try
