@@ -17,6 +17,13 @@ public class CustomerServiceController : ControllerBase
         _customerService = customerService;
     }
 
+    [HttpGet]
+    public List<Customer> Get()
+    {
+        return _customerService.GetCustomer();
+    }
+
+
     [HttpPost("createcustomer", Name = "CreateCustomer")]
     public Customer? PostCustomer(Customer customer)
     {
