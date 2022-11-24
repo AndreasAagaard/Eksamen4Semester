@@ -4,12 +4,18 @@ using mongo_service.Models;
 
 public class ItemService
 {
-    private readonly MongoCollection<MongoItem> _items = new();
     private readonly ILogger<ItemService> _logger;
+    private readonly IMongoDatabase database;
+    private readonly IMongoCollection<MongoItem> items;
 
-    public ItemService(ILogger<ItemService> logger)
+    public ItemService(ILogger<ItemService> logger, VaultSharpService vault)
     {
         _logger = logger;
+
+        var mongoKey = vault.GetMongoDBString("MongoDBString1").GetAwaiter().GetResult();
+        var client = new MongoClient(mongoKey);
+        database = client.GetDatabase("Eksamen4Semester");
+        items = database.GetCollection<MongoItem>("Items");
 
         try 
         {
@@ -20,12 +26,14 @@ public class ItemService
             _logger.LogError(ex.Message);
         }    
     }
+    public List<MongoItem> GetItems() => items.Find(x => true).ToList();
+
     public MongoItem GetItem(string id)
     {
-        MongoItem item = new MongoItem { };
+        MongoItem item = new MongoItem();
         try 
         {
-            item = _items.Find(item => item._id == id).First();
+            item = items.Find(item => item._id == id).First();
             return item; 
         } 
         catch (Exception ex) 
@@ -38,7 +46,7 @@ public class ItemService
     {
         try 
         {
-            _items.InsertOne(item);
+            items.InsertOne(item);
             _logger.LogInformation("Succesfully created new item");
         } 
         catch (Exception ex) 

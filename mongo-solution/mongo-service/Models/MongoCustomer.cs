@@ -11,6 +11,7 @@ public class MongoCustomer
         Mobile = mobile;
         Email = email;
     }
+    public MongoCustomer(){}
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

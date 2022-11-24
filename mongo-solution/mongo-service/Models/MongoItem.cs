@@ -8,6 +8,8 @@ public class MongoItem
     {
         Name = name;
     }
+    public MongoItem(){}
+
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

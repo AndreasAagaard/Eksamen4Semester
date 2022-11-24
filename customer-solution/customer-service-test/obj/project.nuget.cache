@@ -1,6 +1,5 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "52MIMULI8+6rWJxF/YrWAhhHmUnOpZi1JcjyMFdPGU89rOld89dzyLF3L1EoASkTcwgeVkSTW3OK1wg1tggkEw==",
   "success": true,
   "projectFilePath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
@@ -61,65 +60,13 @@
     "/Users/nicolaiskat/.nuget/packages/system.threading.tasks.extensions/4.0.0/system.threading.tasks.extensions.4.0.0.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/system.xml.readerwriter/4.0.11/system.xml.readerwriter.4.0.11.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512"
-=======
-  "dgSpecHash": "ND7s8mr31zsr0ozAjnujmApBRJiflLTFgbdzVeVnR7HPsl0/xN9vFcNvyYkXzH+0/McJ32Q4QB2EgPLOUxjLgg==",
-  "success": true,
-  "projectFilePath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
-  "expectedPackageFiles": [
-    "/Users/linekrogshavejorgensen/.nuget/packages/coverlet.collector/3.1.2/coverlet.collector.3.1.2.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.codecoverage/17.1.0/microsoft.codecoverage.17.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.csharp/4.0.1/microsoft.csharp.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.net.test.sdk/17.1.0/microsoft.net.test.sdk.17.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.testplatform.objectmodel/17.1.0/microsoft.testplatform.objectmodel.17.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/microsoft.testplatform.testhost/17.1.0/microsoft.testplatform.testhost.17.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/netstandard.library/2.0.0/netstandard.library.2.0.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/nuget.frameworks/5.11.0/nuget.frameworks.5.11.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/nunit/3.13.3/nunit.3.13.3.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/nunit.analyzers/3.3.0/nunit.analyzers.3.3.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/nunit3testadapter/4.2.1/nunit3testadapter.4.2.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.collections/4.0.11/system.collections.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.diagnostics.debug/4.0.11/system.diagnostics.debug.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.diagnostics.tools/4.0.1/system.diagnostics.tools.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.dynamic.runtime/4.0.11/system.dynamic.runtime.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.globalization/4.0.11/system.globalization.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.io/4.1.0/system.io.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.io.filesystem/4.0.1/system.io.filesystem.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.io.filesystem.primitives/4.0.1/system.io.filesystem.primitives.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.linq/4.1.0/system.linq.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.linq.expressions/4.1.0/system.linq.expressions.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.objectmodel/4.0.12/system.objectmodel.4.0.12.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection/4.1.0/system.reflection.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.emit/4.0.1/system.reflection.emit.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.emit.ilgeneration/4.0.1/system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.emit.lightweight/4.0.1/system.reflection.emit.lightweight.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.extensions/4.0.1/system.reflection.extensions.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.metadata/1.6.0/system.reflection.metadata.1.6.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.primitives/4.0.1/system.reflection.primitives.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.reflection.typeextensions/4.1.0/system.reflection.typeextensions.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.resources.resourcemanager/4.0.1/system.resources.resourcemanager.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.runtime/4.1.0/system.runtime.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.runtime.extensions/4.1.0/system.runtime.extensions.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.runtime.handles/4.0.1/system.runtime.handles.4.0.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.runtime.interopservices/4.1.0/system.runtime.interopservices.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.runtime.serialization.primitives/4.1.1/system.runtime.serialization.primitives.4.1.1.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.text.encoding/4.0.11/system.text.encoding.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.text.encoding.extensions/4.0.11/system.text.encoding.extensions.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.text.regularexpressions/4.1.0/system.text.regularexpressions.4.1.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.threading/4.0.11/system.threading.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.threading.tasks/4.0.11/system.threading.tasks.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.threading.tasks.extensions/4.0.0/system.threading.tasks.extensions.4.0.0.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.xml.readerwriter/4.0.11/system.xml.readerwriter.4.0.11.nupkg.sha512",
-    "/Users/linekrogshavejorgensen/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512"
->>>>>>> 1d6805dcc73e598a8cb0866fc8bca21bcc169569
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

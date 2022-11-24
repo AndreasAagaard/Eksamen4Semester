@@ -11,6 +11,7 @@ public class ItemServiceService
     public ItemServiceService(ILogger<ItemServiceService> logger)
     {
         _logger = logger;
+        SeedData();
     }
 
     public List<Item> GetItem()
@@ -38,5 +39,13 @@ public class ItemServiceService
     private void LogError(Exception ex) 
     {
         _logger.LogError(ex.Message);
+    }
+
+    private void SeedData() 
+    {
+        createItems(new Item("Pizza"));
+        createItems(new Item("Mel"));
+        createItems(new Item("Ikke ananas"));
+        createItems(new Item("Tand"));
     }
 }

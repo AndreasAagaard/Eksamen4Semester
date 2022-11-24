@@ -4,11 +4,12 @@ using customer_service.Models;
 public class CustomerService
 {
     public static int Id = 1;
-    public List<Customer> Customers = new();
+    private List<Customer> Customers = new();
     private readonly ILogger<CustomerService> _logger;
     public CustomerService(ILogger<CustomerService> logger)
     {
         _logger = logger;
+        SeedData();
     }
 
     public List<Customer> GetCustomer()
@@ -16,7 +17,7 @@ public class CustomerService
         return Customers;
     }
 
-    public string CreateCustomer(Customer customer)
+    public Customer? CreateCustomer(Customer customer)
     {
         try
         {
@@ -42,5 +43,12 @@ public class CustomerService
     public static void ResetCounter() 
     {
         Id = 1;
+    }
+    private void SeedData() 
+    {
+        CreateCustomer(new Customer("nicolai", "12345678", "nicolai@gmail.com"));
+        CreateCustomer(new Customer("andreas", "34567812", "andreas@gmail.com"));
+        CreateCustomer(new Customer("line", "56781234", "line@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
     }
 }

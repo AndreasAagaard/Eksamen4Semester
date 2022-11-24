@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YldHVfRIQpA9ZE5enfkudRz9aUZ6QwjeOi7tabdujZvopChnK1QZVJc++3Grqpcj+xaWRlMf3j/kMt8gsFYbOQ==",
+  "dgSpecHash": "bPyLZafMel4f/YgQBXqJyntFQ/rXEnhrLSadnjUI62a71cyuHTj+J5iPMq+dW5onx0me3YjVrcNhn6HvTeCU5w==",
   "success": true,
   "projectFilePath": "/Users/nicolaiskat/Eksamen4Semester/mongo-solution/mongo-service/mongo-service.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "/Users/nicolaiskat/.nuget/packages/mongodb.driver/2.17.1/mongodb.driver.2.17.1.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/mongodb.driver.core/2.17.1/mongodb.driver.core.2.17.1.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/mongodb.libmongocrypt/1.5.5/mongodb.libmongocrypt.1.5.5.nupkg.sha512",
+    "/Users/nicolaiskat/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/sharpcompress/0.30.1/sharpcompress.0.30.1.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
@@ -21,7 +22,8 @@
     "/Users/nicolaiskat/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/system.security.accesscontrol/5.0.0/system.security.accesscontrol.5.0.0.nupkg.sha512",
-    "/Users/nicolaiskat/.nuget/packages/system.security.principal.windows/5.0.0/system.security.principal.windows.5.0.0.nupkg.sha512"
+    "/Users/nicolaiskat/.nuget/packages/system.security.principal.windows/5.0.0/system.security.principal.windows.5.0.0.nupkg.sha512",
+    "/Users/nicolaiskat/.nuget/packages/vaultsharp/1.7.1/vaultsharp.1.7.1.nupkg.sha512"
   ],
   "logs": []
 }

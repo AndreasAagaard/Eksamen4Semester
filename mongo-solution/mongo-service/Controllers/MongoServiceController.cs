@@ -19,32 +19,34 @@ public class MongoServiceController : ControllerBase
         _logger = logger;
     }
 
+    [HttpGet("getitems")]
+    public List<MongoItem> GetItems() => _itemservice.GetItems();
+
+    [HttpGet("getcustomers")]
+    public List<MongoCustomer> GetCustomers() => _customerservice.GetCustomers();
     [HttpPost("createcustomer")]
-    public MongoCustomer CreateCustomer(MongoCustomer customer)
+    public void CreateCustomer(MongoCustomer customer)
     {
         try 
         {
-            return _customerservice.CreateCustomer(customer);
+            _customerservice.CreateCustomer(customer);
         } 
         catch (Exception ex) 
         {
             _logger.LogError(ex.Message);
-            return new();
         }
     }
 
     [HttpPost("createitem")]
-    public string CreateItem(MongoItem item)
+    public void CreateItem(MongoItem item)
     {
         try 
         {
             _itemservice.CreateItem(item);
-            return "Created id: " + item._id;
         } 
         catch (Exception ex) 
         {
             _logger.LogError(ex.Message);
-            return "Something went wrong. Please try again";
         }
     }
 }

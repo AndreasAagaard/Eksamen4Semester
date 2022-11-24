@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj": {}
   },
   "projects": {
@@ -13,22 +12,9 @@
         "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
         "packagesPath": "/Users/nicolaiskat/.nuget/packages/",
         "outputPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service-test/obj/",
-=======
-    "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj": {}
-  },
-  "projects": {
-    "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
-        "projectName": "customer-service-test",
-        "projectPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service-test/customer-service-test.csproj",
-        "packagesPath": "/Users/linekrogshavejorgensen/.nuget/packages/",
-        "outputPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service-test/obj/",
->>>>>>> 1d6805dcc73e598a8cb0866fc8bca21bcc169569
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/linekrogshavejorgensen/.nuget/NuGet/NuGet.Config"
+          "/Users/nicolaiskat/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -40,13 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
                 "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj"
-=======
-              "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
-                "projectPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj"
->>>>>>> 1d6805dcc73e598a8cb0866fc8bca21bcc169569
               }
             }
           }
@@ -92,8 +73,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -102,11 +82,10 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     },
-<<<<<<< HEAD
     "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -115,19 +94,9 @@
         "projectPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
         "packagesPath": "/Users/nicolaiskat/.nuget/packages/",
         "outputPath": "/Users/nicolaiskat/Eksamen4Semester/customer-solution/customer-service/obj/",
-=======
-    "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
-        "projectName": "customer-service",
-        "projectPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/customer-service.csproj",
-        "packagesPath": "/Users/linekrogshavejorgensen/.nuget/packages/",
-        "outputPath": "/Users/linekrogshavejorgensen/Documents/Line/EAAA/ITA4/eksamen/Eksamen4Semester/customer-solution/customer-service/obj/",
->>>>>>> 1d6805dcc73e598a8cb0866fc8bca21bcc169569
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/linekrogshavejorgensen/.nuget/NuGet/NuGet.Config"
+          "/Users/nicolaiskat/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -162,8 +131,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -175,7 +143,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }
