@@ -1,39 +1,62 @@
 using item_service.Models;
+using MongoDB.Driver;
+
+
 namespace item_service.Service;
 
-public class CatalogService
+public interface ICatalogService
+{
+    Task<ProductItemDTO?> GetProduct(Guid productId);
+    Task<Guid?> CreateProduct(ProductItemDTO item);
+}
+
+public class CatalogService : ICatalogService
 {
     private int id = 1;
     public List<ProductItemDTO> Catalog = new List<ProductItemDTO>();
 
     private ILogger<CatalogService> _logger;
-
-    public CatalogService(ILogger<CatalogService> logger)
+    private IMongoDatabase _database;
+    private IMongoCollection<ProductItemDTO> _collection;
+    public CatalogService(ILogger<CatalogService> logger, MongoDBContext dbcontext)
     {
         _logger = logger;
+        _database = dbcontext.Database;        
+        _collection = dbcontext.Collection;
     }
 
-    public ProductItemDTO GetProduct(Guid id)
+    public async Task<ProductItemDTO?> GetProduct(Guid productId)
     {
-        return Catalog.Find(x => x.ProductId == id);
+        ProductItemDTO? product = null;
+        var filter = Builders<ProductItemDTO>.Filter.Eq(x => x.ProductId, productId);
+        
+        try
+        {
+            product = await _collection.Find(filter).SingleOrDefaultAsync();
+        }
+        catch(Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+        }
+
+        return product;    
     }
 
-    // public string CreateProduct(ProductItemDTO product)
-    // {
-        // try
-        // {
-        //     item.ItemId = id++;
-        //     Items.Add(item);
-        //     _logger.LogInformation("New item with Id: " + item.ItemId +
-        //                                 " created at timestamp " + DateTime.Now);
-        //     return $"{item.Name} added succesfully";
-        // }
-        // catch (Exception ex)
-        // {
-        //     LogError(ex);
-        //     return "Item not created";
-        // }
-    // }
+    public async Task<Guid?> CreateProduct(ProductItemDTO item)
+    {
+        Guid? result = null;
+        try {
+            item.ProductId = Guid.NewGuid();
+            await _collection.InsertOneAsync(item);
+            result = item.ProductId;
+        }
+        catch(Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+        }
+
+        return result;
+    }
 
     private void LogError(Exception ex) 
     {

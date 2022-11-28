@@ -8,8 +8,6 @@ namespace item_service.Controllers;
 [Route("[controller]")]
 public class CatalogController : ControllerBase
 {
-
-
     private readonly ILogger<CatalogController> _logger;
     private readonly CatalogService _service;
 
@@ -19,15 +17,23 @@ public class CatalogController : ControllerBase
         _service = service;
     }
 
-    [HttpGet("GetProduct/{string:id}")]
-    public IActionResult GetProduct(Guid id)
+    [HttpGet("GetProduct/{productId}")]
+    public async Task<IActionResult> GetProduct(Guid productId)
     {
-        return Ok(_service.GetProduct(id));
+        _logger.LogInformation($"Request for product with guid: {productId}");
+        
+        ProductItemDTO? result = await _service.GetProduct(productId);
+
+        return Ok(new { result });
     }
 
-    // [HttpPost]
-    // public IActionResult CreateProduct(ProductItemDTO product)
-    // {
-    //     return Ok(_service.CreateProduct(product));
-    // }
+    [HttpPost]
+    public async Task<IActionResult> CreateProduct(ProductItemDTO dto)
+    {
+        _logger.LogInformation($"Request for product creation");
+        
+        Guid? result = await _service.CreateProduct(dto);
+        
+        return Ok(new { result });
+    }
 }
