@@ -47,5 +47,19 @@ public class ItemServiceService
         createItems(new Item("Mel"));
         createItems(new Item("Ikke ananas"));
         createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
+        createItems(new Item("Tand"));
     }
 }

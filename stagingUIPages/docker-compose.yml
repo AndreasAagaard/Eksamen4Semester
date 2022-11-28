@@ -1,0 +1,20 @@
+version: '3.7' 
+
+services: 
+  customer-service: 
+    image: nicolaiskat/eksamen-customer-service:latest 
+    expose: 
+      - "80"   
+  item-service: 
+    image: nicolaiskat/eksamen-item-service:latest 
+    expose: 
+      - "80"   
+  nginx: 
+    image: nginx:latest 
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro 
+    depends_on: 
+      - customer-service
+      - item-service 
+    ports:
+      - "4000:4000"
