@@ -30,7 +30,7 @@ public class CatalogController : ControllerBase
             );
 
         if (result == null)
-            return StatusCode(500);
+            return StatusCode(204);
         
         return Ok(new { result });
     }
@@ -45,7 +45,7 @@ public class CatalogController : ControllerBase
             );
         
         if (result == null)
-            return StatusCode(500);
+            return BadRequest();
         
         return Ok(new { result });
     }

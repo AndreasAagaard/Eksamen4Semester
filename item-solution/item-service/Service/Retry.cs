@@ -24,13 +24,14 @@ public class RetryService
             {
                 // Call external service.
                 var result = await task;
+                _logger.LogInformation(nameof(task) + " executed");
+
                 if (result == null) {
-                    _logger.LogInformation("result er null");
+                    _logger.LogInformation("No content");
                     return default;
                 }
 
                 // Return or break.
-                _logger.LogInformation(nameof(task) + " executed");
                 return result;
             }
             catch (Exception ex)
@@ -41,7 +42,7 @@ public class RetryService
                 if (currentRetry >= this.retryCount || !IsTransient(ex))
                 {
                     _logger.LogCritical(ex, ex.Message);
-                    return default;
+                    throw;
                 }
                 _logger.LogInformation("Trying again");
             }
