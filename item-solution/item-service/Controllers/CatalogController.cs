@@ -10,11 +10,14 @@ public class CatalogController : ControllerBase
 {
     private readonly ILogger<CatalogController> _logger;
     private readonly CatalogService _service;
+    private readonly RetryService _retry;
 
-    public CatalogController(ILogger<CatalogController> logger, CatalogService service)
+    public CatalogController(ILogger<CatalogController> logger, CatalogService service,
+        RetryService retry)
     {
         _logger = logger;
         _service = service;
+        _retry = retry;
     }
 
     [HttpGet("GetProduct/{productId}")]
@@ -22,8 +25,13 @@ public class CatalogController : ControllerBase
     {
         _logger.LogInformation($"Request for product with guid: {productId}");
         
-        ProductItemDTO? result = await _service.GetProduct(productId);
+        ProductItemDTO? result = await _retry.RetryFunction(
+            _service.GetProduct(productId)
+            );
 
+        if (result == null)
+            return StatusCode(500);
+        
         return Ok(new { result });
     }
 
@@ -32,7 +40,12 @@ public class CatalogController : ControllerBase
     {
         _logger.LogInformation($"Request for product creation");
         
-        Guid? result = await _service.CreateProduct(dto);
+        Guid? result = await _retry.RetryFunction(
+            _service.CreateProduct(dto)
+            );
+        
+        if (result == null)
+            return StatusCode(500);
         
         return Ok(new { result });
     }

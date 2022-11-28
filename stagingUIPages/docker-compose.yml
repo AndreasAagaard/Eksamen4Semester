@@ -10,7 +10,7 @@ services:
     expose: 
       - "80" 
     environment:
-      - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin
+      - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000
     depends_on:
       - mongodb
   nginx: 

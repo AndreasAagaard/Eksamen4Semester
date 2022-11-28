@@ -27,34 +27,21 @@ public class CatalogService : ICatalogService
 
     public async Task<ProductItemDTO?> GetProduct(Guid productId)
     {
-        ProductItemDTO? product = null;
+        //ProductItemDTO? product = null;
         var filter = Builders<ProductItemDTO>.Filter.Eq(x => x.ProductId, productId);
         
-        try
-        {
-            product = await _collection.Find(filter).SingleOrDefaultAsync();
-        }
-        catch(Exception ex)
-        {
-            _logger.LogError(ex, ex.Message);
-        }
-
+        ProductItemDTO? product = await _collection.Find(filter).SingleOrDefaultAsync();
+        
         return product;    
     }
 
     public async Task<Guid?> CreateProduct(ProductItemDTO item)
     {
-        Guid? result = null;
-        try {
-            item.ProductId = Guid.NewGuid();
-            await _collection.InsertOneAsync(item);
-            result = item.ProductId;
-        }
-        catch(Exception ex)
-        {
-            _logger.LogError(ex, ex.Message);
-        }
+        item.ProductId = Guid.NewGuid();
+        
+        await _collection.InsertOneAsync(item);
 
+        var result = item.ProductId;
         return result;
     }
 

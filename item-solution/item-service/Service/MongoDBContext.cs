@@ -11,7 +11,7 @@ namespace item_service.Service;
 /// </summary>
 public class MongoDBContext
 {
-    private ILogger<CatalogService> _logger;
+    private ILogger<MongoDBContext> _logger;
     private IConfiguration _config;
     public IMongoDatabase Database { get; set; }
     public IMongoCollection<ProductItemDTO> Collection { get; set; }
@@ -21,7 +21,7 @@ public class MongoDBContext
     /// </summary>
     /// <param name="logger">Global logging facility.</param>
     /// <param name="config">System configuration instance.</param>
-    public MongoDBContext(ILogger<CatalogService> logger, IConfiguration config)
+    public MongoDBContext(ILogger<MongoDBContext> logger, IConfiguration config)
     {
         _logger = logger;
         _config = config;

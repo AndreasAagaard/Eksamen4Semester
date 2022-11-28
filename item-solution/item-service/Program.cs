@@ -9,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<CatalogService>();
 builder.Services.AddTransient<MongoDBContext>();
+builder.Services.AddTransient<RetryService>();
 
 var app = builder.Build();
 
