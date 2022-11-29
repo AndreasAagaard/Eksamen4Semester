@@ -50,5 +50,20 @@ public class CustomerService
         CreateCustomer(new Customer("andreas", "34567812", "andreas@gmail.com"));
         CreateCustomer(new Customer("line", "56781234", "line@gmail.com"));
         CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
+        CreateCustomer(new Customer("sissel", "78123456", "sissel@gmail.com"));
     }
 }
