@@ -17,7 +17,8 @@ namespace BiddingHandler.Controllers;
 public class BiddingController : ControllerBase
 {
     private readonly ILogger<BiddingController> _logger;
-    private readonly IConnection _connection;
+    private IConnection _connection;
+    private readonly string mqhostname;
     private Int32 NextId { get; set; }
 
     /// <summary>
@@ -28,17 +29,9 @@ public class BiddingController : ControllerBase
     {
         _logger = logger;
 
-        var mqhostname = configuration["AuctionBrokerHost"];
-
-        if (String.IsNullOrEmpty(mqhostname))
-        {
-            mqhostname = "localhost";
-        }
+        mqhostname = configuration["AuctionBrokerHost"];
 
         _logger.LogInformation($"Using host at {mqhostname} for message broker");
-        
-        var factory = new ConnectionFactory() { HostName = mqhostname };
-        _connection = factory.CreateConnection();
     }
 
     /// <summary>
@@ -54,6 +47,9 @@ public class BiddingController : ControllerBase
         bid.Timestamp = DateTime.Now;
 
         try {
+            var factory = new ConnectionFactory() { HostName = mqhostname };
+            _connection = factory.CreateConnection();
+
             using(var channel = _connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "auction",
