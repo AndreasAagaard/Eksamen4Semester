@@ -30,7 +30,7 @@ public class CatalogController : ControllerBase
             );
 
         if (result == null)
-            return StatusCode(204);
+            return NoContent();
         
         return Ok(new { result });
     }
