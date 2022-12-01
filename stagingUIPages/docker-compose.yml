@@ -4,7 +4,15 @@ services:
   # customer-service: 
   #   image: nicolaiskat/eksamen-customer-service:latest 
   #   expose: 
-  #     - "80"   
+  #     - "80"  
+  bidding-publisher: 
+    image: nicolaiskat/eksamen-bidding-publisher:latest
+    ports: 
+      - "8081:80" 
+    environment: 
+      - AuctionBrokerHost=rabbitmq-dev 
+    depends_on: 
+      - rabbitmq-dev  
   item-service: 
     image: nicolaiskat/eksamen-item-service:latest 
     expose: 
