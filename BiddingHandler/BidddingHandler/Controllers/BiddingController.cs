@@ -60,8 +60,9 @@ public class BiddingController : ControllerBase
 
                 var body = JsonSerializer.SerializeToUtf8Bytes(bid);
 
-                channel.BasicPublish(exchange: "",
-                                    routingKey: bid.AuctionId.ToString(),
+                var Exchange = bid.AuctionId.ToString();
+                channel.BasicPublish(exchange: Exchange,
+                                    routingKey: "auction",
                                     basicProperties: null,
                                     body: body);
             }
