@@ -8,11 +8,11 @@ namespace auction_service.Controllers;
 [Route("[controller]")]
 public class AuctionController : ControllerBase
 {
-    private readonly ILogger<CatalogController> _logger;
+    private readonly ILogger<AuctionController> _logger;
     private readonly auction_service _service;
     private readonly RetryService _retry;
 
-    public CatalogController(ILogger<CatalogController> logger, CatalogService service,
+    public CatalogController(ILogger<AuctionController> logger, AuctionController service,
         RetryService retry)
     {
         _logger = logger;
@@ -20,13 +20,13 @@ public class AuctionController : ControllerBase
         _retry = retry;
     }
 
-    [HttpGet("GetProduct/{productId}")]
-    public async Task<IActionResult> GetProduct(Guid productId)
+    [HttpGet("GetAuction/{auctionId}")]
+    public async Task<IActionResult> GetProduct(Guid auctionId)
     {
-        _logger.LogInformation($"Request for product with guid: {productId}");
+        _logger.LogInformation($"Request for product with guid: {auctionId}");
         
-        ProductItemDTO? result = await _retry.RetryFunction(
-            _service.GetProduct(productId)
+        AuctionItemDTO? result = await _retry.RetryFunction(
+            _service.GetAuction(auctionId)
             );
 
         if (result == null)
@@ -36,12 +36,12 @@ public class AuctionController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateProduct(ProductItemDTO dto)
+    public async Task<IActionResult> CreateAuction(AuctionItemDTO dto)
     {
-        _logger.LogInformation($"Request for product creation");
+        _logger.LogInformation($"Request for auction creation");
         
         Guid? result = await _retry.RetryFunction(
-            _service.CreateProduct(dto)
+            _service.CreateAuction(dto)
             );
         
         if (result == null)

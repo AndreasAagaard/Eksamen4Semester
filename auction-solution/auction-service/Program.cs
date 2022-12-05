@@ -1,3 +1,4 @@
+using auction_service.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +7,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<AuctionService>();
+builder.Services.AddTransient<MongoDBContext>();
+builder.Services.AddTransient<RetryService>();
 
 var app = builder.Build();
 

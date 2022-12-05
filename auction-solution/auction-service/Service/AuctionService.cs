@@ -32,13 +32,13 @@ public class AuctionService : IAuctionService
         return product;    
     }
 
-    public async Task<Guid?> CreateProduct(ProductItemDTO item)
+    public async Task<Guid?> CreateAuction(AuctionItemDTO auction)
     {
-        item.ProductId = Guid.NewGuid();
+        auction.AuctionId = Guid.NewGuid();
         
         await _collection.InsertOneAsync(item);
 
-        var result = item.ProductId;
+        var result = auction.AuctionId;
         return result;
     }
 
