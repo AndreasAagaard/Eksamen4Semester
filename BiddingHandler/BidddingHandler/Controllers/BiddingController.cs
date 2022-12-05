@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using RabbitMQ.Client;
 using BiddingHandler.Models;
+using RabbitMQ.Client.Events;
 
 namespace BiddingHandler.Controllers;
 
@@ -74,5 +75,48 @@ public class BiddingController : ControllerBase
         _logger.LogInformation("Bid has succesfully been sent to queue");
         return bid;
 
+    }
+
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        var channel = _connection.CreateModel();
+        channel.QueueDeclare(queue: "taxabooking",
+                            durable: false,
+                            exclusive: false,
+                            autoDelete: false,
+                            arguments: null);
+
+        var consumer = new EventingBasicConsumer(channel);
+        consumer.Received += (model, ea) =>
+        {
+            var body = ea.Body.ToArray();
+            var message = Encoding.UTF8.GetString(body);
+
+            object dto = JsonSerializer.Deserialize<object>(message);
+            if (dto != null)
+            {
+                dto.BookingID = _nextID++;
+                _logger.LogInformation("Processing booking {id} from {customer} ", dto.BookingID, dto.CustomerName);
+
+                _repository.Put(dto);
+
+            }
+            else
+            {
+                _logger.LogWarning($"Could not deserialize message with body: {message}");
+            }
+
+        };
+
+        channel.BasicConsume(queue: "taxabooking",
+                            autoAck: true,
+                            consumer: consumer);
+
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            //_logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            await Task.Delay(1000, stoppingToken);
+        }
     }
 }
