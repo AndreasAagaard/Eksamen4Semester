@@ -1,5 +1,5 @@
 using System;
-namespace BiddingHandler.Models;
+namespace auction_service.Models;
 
 public class BiddingItemDTO
 {
@@ -7,6 +7,6 @@ public class BiddingItemDTO
     public Guid AuctionId { get; set;}
     public Guid UserId { get; set;}
     public double Offer {get; set;}
-    public DateTime? Timestamp {get; set;}
+    public DateTime Timestamp {get; set;}
 
 }

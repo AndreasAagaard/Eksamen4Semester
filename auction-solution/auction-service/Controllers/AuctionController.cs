@@ -9,11 +9,10 @@ namespace auction_service.Controllers;
 public class AuctionController : ControllerBase
 {
     private readonly ILogger<AuctionController> _logger;
-    private readonly auction_service _service;
+    private readonly AuctionService _service;
     private readonly RetryService _retry;
 
-    public CatalogController(ILogger<AuctionController> logger, AuctionController service,
-        RetryService retry)
+    public AuctionController(ILogger<AuctionController> logger, AuctionService service, RetryService retry)
     {
         _logger = logger;
         _service = service;

@@ -14,7 +14,7 @@ public class MongoDBContext
     private ILogger<MongoDBContext> _logger;
     private IConfiguration _config;
     public IMongoDatabase Database { get; set; }
-    public IMongoCollection<ProductItemDTO> Collection { get; set; }
+    public IMongoCollection<AuctionItemDTO> Collection { get; set; }
 
     /// <summary>
     /// Create an instance of the context class.
@@ -30,8 +30,8 @@ public class MongoDBContext
         //Add retry and circuit breaker
         //Add secret to vault
         var client = new MongoClient(_config["MongoConnectionString"]);
-        Database = client.GetDatabase("AuctionHouse");
-        Collection = Database.GetCollection<AuctionItemDTO>("Auction");
+        Database = client.GetDatabase(_config["Database"]);
+        Collection = Database.GetCollection<AuctionItemDTO>(_config["Collection"]);
 
         logger.LogInformation($"Connected to database {Database}");
         logger.LogInformation($"Using collection {Collection}");
