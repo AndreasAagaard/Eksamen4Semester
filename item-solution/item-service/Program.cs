@@ -1,4 +1,11 @@
 using item_service.Service;
+using NLog; 
+using NLog.Web; 
+
+var logger = 
+NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger(); 
+logger.Debug("init main");
+try{
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<CatalogService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<RetryService>();
+builder.Logging.ClearProviders(); 
+builder.Host.UseNLog(); 
 
 var app = builder.Build();
 
@@ -24,3 +33,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+}
+catch (Exception ex) 
+{ 
+   logger.Error(ex, "Stopped program because of exception"); 
+   throw; 
+} 
