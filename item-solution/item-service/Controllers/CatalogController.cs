@@ -29,8 +29,12 @@ public class CatalogController : ControllerBase
             _service.GetProduct(productId)
             );
 
-        if (result == null)
+        if (result == null){
+            _logger.LogInformation($"Result of the request was: {result}");
             return NoContent();
+        }
+        
+        _logger.LogDebug($"Result of the request was: {result}");
         
         return Ok(new { result });
     }
