@@ -51,6 +51,17 @@ services:
       - "15672:15672" 
       - "5672:5672"
 
+  loki: 
+    image: grafana/loki 
+    ports: 
+      - "3100:3100" 
+    command: -config.file=/etc/loki/local-config.yaml 
+  
+  grafana: 
+    image: grafana/grafana:latest 
+    ports: 
+      - "3000:3000"
+
   mongodb:
     image: mongo:latest
     restart: always
