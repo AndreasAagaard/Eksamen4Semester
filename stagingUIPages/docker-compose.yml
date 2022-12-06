@@ -9,6 +9,20 @@ services:
       - AuctionBrokerHost=rabbitmq-dev 
     depends_on: 
       - rabbitmq-dev  
+      - auction-service 
+
+  auction-service: 
+    image: nicolai/eksamen-auction-service:dev
+    ports: 
+      - "80" 
+    environment:
+      - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000
+      - AuctionBrokerHost=rabbitmq-dev 
+      - Database=AuctionHouse
+      - Collection=Auction
+    depends_on: 
+      - rabbitmq-dev  
+      - mongodb
 
   item-service: 
     image: nicolaiskat/eksamen-item-service:latest 
@@ -16,6 +30,8 @@ services:
       - "80" 
     environment:
       - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000
+      - Database=AuctionHouse
+      - Collection=Catalog
     depends_on:
       - mongodb
 
@@ -26,8 +42,14 @@ services:
     depends_on: 
       - item-service 
       - bidding-publisher 
+      - auction-service
     ports:
       - "4000:4000"
+  rabbitmq-dev: 
+    image: rabbitmq:management 
+    ports: 
+      - "15672:15672" 
+      - "5672:5672"
 
   mongodb:
     image: mongo:latest
