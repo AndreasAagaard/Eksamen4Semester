@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Ignore dev folders
+stagingUIPagesDev/
+
 # User-specific files
 *.rsuser
 *.suo
