@@ -12,7 +12,7 @@ services:
       - auction-service 
 
   auction-service: 
-    image: nicolai/eksamen-auction-service:dev
+    image: nicolai/eksamen-auction-service:latest
     ports: 
       - "80" 
     environment:
