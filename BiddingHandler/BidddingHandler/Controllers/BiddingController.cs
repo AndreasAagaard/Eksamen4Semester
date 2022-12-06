@@ -18,9 +18,8 @@ namespace BiddingHandler.Controllers;
 public class BiddingController : ControllerBase
 {
     private readonly ILogger<BiddingController> _logger;
-    private IConnection _connection;
     private readonly string mqhostname;
-    private Int32 NextId { get; set; }
+    private static int NextId;
 
     /// <summary>
     /// Inject a logger service into the controller on creation.
@@ -31,27 +30,25 @@ public class BiddingController : ControllerBase
         _logger = logger;
 
         mqhostname = configuration["AuctionBrokerHost"];
-
         _logger.LogInformation($"Using host at {mqhostname} for message broker");
     }
-
+    
     /// <summary>
     /// Endpoint for recieving bids.
     /// </summary>
     /// <param name="bid">A bidding object</param>
     /// <returns>On success - the bid object with bid id and received date.</returns>
     [HttpPost]
-    public async Task<BiddingItemDTO?> Post(BiddingItemDTO bid)
+    public BiddingItemDTO? Post(BiddingItemDTO bid)
     {
         _logger.LogInformation($"Post bid is running");
         bid.OfferId = NextId++;
         bid.Timestamp = DateTime.Now;
-
+        
         try {
             var factory = new ConnectionFactory() { HostName = mqhostname };
-            _connection = factory.CreateConnection();
-
-            using(var channel = _connection.CreateModel())
+            using (var _connection = factory.CreateConnection())
+            using (var channel = _connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "auction",
                                     durable: false,
@@ -61,62 +58,17 @@ public class BiddingController : ControllerBase
 
                 var body = JsonSerializer.SerializeToUtf8Bytes(bid);
 
-                var Exchange = bid.AuctionId.ToString();
-                channel.BasicPublish(exchange: Exchange,
+                channel.BasicPublish(exchange: "",
                                     routingKey: "auction",
                                     basicProperties: null,
                                     body: body);
+                
+                _logger.LogInformation("Bid has succesfully been sent to queue");
             }
         } catch (Exception ex) {
-            _logger.LogError(ex, "Something went wrong with the bid");
+            _logger.LogError(ex.Message);
             return null;
         }
-
-        _logger.LogInformation("Bid has succesfully been sent to queue");
         return bid;
-
-    }
-
-
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        var channel = _connection.CreateModel();
-        channel.QueueDeclare(queue: "taxabooking",
-                            durable: false,
-                            exclusive: false,
-                            autoDelete: false,
-                            arguments: null);
-
-        var consumer = new EventingBasicConsumer(channel);
-        consumer.Received += (model, ea) =>
-        {
-            var body = ea.Body.ToArray();
-            var message = Encoding.UTF8.GetString(body);
-
-            object dto = JsonSerializer.Deserialize<object>(message);
-            if (dto != null)
-            {
-                dto.BookingID = _nextID++;
-                _logger.LogInformation("Processing booking {id} from {customer} ", dto.BookingID, dto.CustomerName);
-
-                _repository.Put(dto);
-
-            }
-            else
-            {
-                _logger.LogWarning($"Could not deserialize message with body: {message}");
-            }
-
-        };
-
-        channel.BasicConsume(queue: "taxabooking",
-                            autoAck: true,
-                            consumer: consumer);
-
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            //_logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            await Task.Delay(1000, stoppingToken);
-        }
     }
 }

@@ -1,15 +1,21 @@
 using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace auction_service.Models;
 
 public class OfferItemDTO
 {
-    [BsonId]
-    public Guid? OfferId { get; set; }
+    public OfferItemDTO(int offerId, Guid userId, double offer, DateTime timestamp)
+    {
+        OfferId = offerId;
+        UserId = userId;
+        Offer = offer;
+        Timestamp = timestamp;
+    }
 
-    public Guid? UserId { get; set;}
-
+    public Int32 OfferId { get; set; }
+    public Guid UserId { get; set;}
     public double Offer {get; set;}
-
     public DateTime Timestamp {get; set;}
-
 }

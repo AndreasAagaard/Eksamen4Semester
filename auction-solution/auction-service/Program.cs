@@ -7,6 +7,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHostedService<BidHandler>();
 builder.Services.AddSingleton<AuctionService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<RetryService>();

@@ -14,7 +14,7 @@ public class MongoDBContext
     private ILogger<MongoDBContext> _logger;
     private IConfiguration _config;
     public IMongoDatabase Database { get; set; }
-    public IMongoCollection<ProductItemDTO> Collection { get; set; }
+    public IMongoCollection<AuctionItemDTO> Collection { get; set; }
 
     /// <summary>
     /// Create an instance of the context class.
