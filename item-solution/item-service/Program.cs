@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<CatalogService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<RetryService>();
+ builder.Services.AddRazorPages();
 builder.Logging.ClearProviders(); 
 builder.Host.UseNLog(); 
 
@@ -32,10 +33,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapRazorPages();
+
 app.Run();
 }
 catch (Exception ex) 
 { 
    logger.Error(ex, "Stopped program because of exception"); 
    throw; 
+} 
+finally 
+{ 
+   NLog.LogManager.Shutdown(); 
 } 

@@ -12,7 +12,7 @@ services:
       - auction-service 
 
   auction-service: 
-    image: nicolai/eksamen-auction-service:latest
+    image: nicolaiskat/eksamen-auction-service:latest
     ports: 
       - "80" 
     environment:
@@ -61,6 +61,8 @@ services:
     image: grafana/grafana:latest 
     ports: 
       - "3000:3000"
+    volumes: 
+      - grafana-storage:/var/lib/grafana
 
   mongodb:
     image: mongo:latest
@@ -75,3 +77,4 @@ services:
 
 volumes:
   mongodb_data_container:
+  grafana-storage:

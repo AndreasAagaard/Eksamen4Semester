@@ -5,7 +5,7 @@
 
 # Ignore dev folders
 stagingUIPagesDev/
-
+customer-solution/customer-service-test/obj/Debug/net6.0/customer-service-test.assets.cache
 # User-specific files
 *.rsuser
 *.suo
