@@ -1,0 +1,27 @@
+name: Push Item Service To Docker Repository
+on:
+  workflow_run:
+      workflows: [CI-item-service]
+      branches: [develop]
+      types:
+        - completed
+jobs:
+  build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Log in to Docker Hub
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD_N }}
+      run:
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Build the Docker image
+      run: |
+        cd ./item-solution/item-service
+        docker build . --file eksamen-item-service/Dockerfile --tag ${DOCKER_USER}/eksamen-item-service:latest
+    - name: Push Docker image to Docker Hub
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
+      run: docker push ${DOCKER_USER}/eksamen-item-service:latest  
