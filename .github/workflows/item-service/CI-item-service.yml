@@ -2,9 +2,9 @@ name: CI-item-service
 
 on:
   push:
-    branches: [ "development" ]
+    branches: [ "develop" ]
     paths:
-      - customer-solution/customer-service/**
+      - item-solution/item-service/**
 
 jobs:
   build:
