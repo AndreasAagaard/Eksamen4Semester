@@ -35,6 +35,14 @@ public class CatalogService : ICatalogService
         return product;    
     }
 
+    public async Task<List<ProductItemDTO>?> GetAllProducts()
+    {
+        //ProductItemDTO? product = null;        
+        List<ProductItemDTO>? products = await _collection.Find(x => true).ToListAsync();
+        
+        return products;    
+    }
+
     public async Task<Guid?> CreateProduct(ProductItemDTO item)
     {
         item.ProductId = Guid.NewGuid();

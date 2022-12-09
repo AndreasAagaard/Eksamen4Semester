@@ -43,6 +43,25 @@ public class CatalogController : ControllerBase
         return Ok(new { result });
     }
 
+    [HttpGet("GetProduct/")]
+    public async Task<IActionResult> GetProduct()
+    {
+        _logger.LogInformation($"Request for all products");
+        
+        List<ProductItemDTO>? result = await _retry.RetryFunction(
+            _service.GetAllProducts()
+            );
+
+        if (result == null){
+            _logger.LogInformation($"Result of the request was: {result}");
+            return NoContent();
+        }
+        
+        _logger.LogDebug($"Result of the request was: {result}");
+        
+        return Ok(new { result });
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateProduct(ProductItemDTO dto)
     {
