@@ -17,11 +17,23 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD_N }}
       run:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Build the Docker image
+    - name: Build the Docker image to our repository
       run: |
         cd ./item-solution/item-service
         docker build . --file eksamen-item-service/Dockerfile --tag ${DOCKER_USER}/eksamen-item-service:latest
     - name: Push Docker image to Docker Hub
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
-      run: docker push ${DOCKER_USER}/eksamen-item-service:latest  
+      run: docker push ${DOCKER_USER}/eksamen-item-service:latest
+      
+    - name: Log into registry
+      uses: docker/login-action@v1
+      with:
+        REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
+        REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
+        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Build & Push
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: ${REGISTRY_URL}.azurecr.io/eksamen-item-service:latest:latest
