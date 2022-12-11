@@ -1,10 +1,16 @@
-name: Push Item Service To Docker Repository
+name: Push Item Service To Docker And Azure Repository
 on:
   workflow_run:
       workflows: [CI-item-service]
       branches: [develop]
       types:
         - completed
+        
+env:
+  DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD_N }}
+  IMAGE_NAME: eksamen-item-service:latest
+  
 jobs:
   build:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
@@ -12,28 +18,23 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Log in to Docker Hub
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD_N }}
       run:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image to our repository
       run: |
         cd ./item-solution/item-service
-        docker build . --file eksamen-item-service/Dockerfile --tag ${DOCKER_USER}/eksamen-item-service:latest
+        docker build . --file eksamen-item-service/Dockerfile --tag ${DOCKER_USER}/${IMAGE_NAME}
     - name: Push Docker image to Docker Hub
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER_N }}
-      run: docker push ${DOCKER_USER}/eksamen-item-service:latest
+      run: docker push ${DOCKER_USER}/${IMAGE_NAME}
       
     - name: Log into registry
       uses: docker/login-action@v1
       with:
-        REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
+        registry: ${{ secrets.REGISTRY_URL }}
         username: ${{ secrets.REGISTRY_USER }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-    - name: Build & Push
+    - name: Build & Push to Registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${REGISTRY_URL}.azurecr.io/eksamen-item-service:latest:latest
+        tags: ${REGISTRY_URL}.azurecr.io/${IMAGE_NAME}
