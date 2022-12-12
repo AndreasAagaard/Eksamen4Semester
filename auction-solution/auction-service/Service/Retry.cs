@@ -4,13 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace auction_service.Service;
 
-public class RetryService
+public interface IRetryService {
+    Task<T?> RetryFunction<T>(Task<T?> task);
+    Task VoidRetryFunction(Task task);
+}
+public class RetryService : IRetryService
 {
-    private readonly ILogger<RetryService> _logger;
+    private readonly ILogger<IRetryService> _logger;
     private int retryCount = 3;
     private readonly TimeSpan delay = TimeSpan.FromSeconds(5);
 
-    public RetryService(ILogger<RetryService> logger)
+    public RetryService(ILogger<IRetryService> logger)
     {
         _logger = logger;
     }
@@ -87,6 +91,7 @@ public class RetryService
             await Task.Delay(delay);
         }
     }
+
     private bool IsTransient(Exception ex)
     {
         _logger.LogInformation($"Checking if exception {ex.GetType().ToString()} is transient");

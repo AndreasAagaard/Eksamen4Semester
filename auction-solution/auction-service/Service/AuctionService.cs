@@ -6,17 +6,19 @@ namespace auction_service.Service;
 
 public interface IAuctionService
 {
+    Task<AuctionItemDTO?> GetAuction(Guid auctionId);
+    Task<Guid?> CreateAuction(AuctionItemDTO auction);
+    Task AddOfferToAuction(Guid auctionId, OfferItemDTO offer);
 }
 
 public class AuctionService : IAuctionService
 {
-    private int id = 1;
-    private ILogger<AuctionService> _logger;
+    private ILogger<IAuctionService> _logger;
     private IMongoDatabase _database;
     private IMongoCollection<AuctionItemDTO> _collection;
-    private readonly RetryService _retry;
-    public AuctionService(ILogger<AuctionService> logger, MongoDBContext dbcontext,
-        RetryService retry)
+    private readonly IRetryService _retry;
+    public AuctionService(ILogger<IAuctionService> logger, MongoDBContext dbcontext,
+        IRetryService retry)
     {
         _logger = logger;
         _database = dbcontext.Database;        

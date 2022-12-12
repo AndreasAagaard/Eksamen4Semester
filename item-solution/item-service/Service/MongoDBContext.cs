@@ -25,7 +25,6 @@ public class MongoDBContext
     {
         _logger = logger;
         _config = config;
-        
         BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
         //Add retry and circuit breaker
         //Add secret to vault

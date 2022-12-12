@@ -8,5 +8,4 @@ public class BiddingItemDTO
     public Guid UserId { get; set;}
     public double Offer {get; set;}
     public DateTime? Timestamp {get; set;}
-
 }
