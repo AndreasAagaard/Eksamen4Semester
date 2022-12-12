@@ -34,6 +34,21 @@ public class AuctionController : ControllerBase
         return Ok(new { result });
     }
 
+    [HttpGet("GetAuction")]
+    public async Task<IActionResult> GetAllProducts()
+    {
+        _logger.LogInformation($"Request for all auctions");
+        
+        List<AuctionItemDTO>? result = await _retry.RetryFunction(
+            _service.GetAllAuctions()
+            );
+
+        if (result == null)
+            return NoContent();
+        
+        return Ok(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAuction(AuctionItemDTO dto)
     {

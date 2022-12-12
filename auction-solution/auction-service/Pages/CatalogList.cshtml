@@ -1,0 +1,24 @@
+﻿@page "/auctionlist" 
+@model auction_service.Pages.CatalogList.CatalogListModel
+@{ 
+} 
+
+<h1>Varekatalog</h1> 
+<hr/> 
+<p>Her kommer en tabel med varer ...</p> 
+<tbody>
+
+@if (Model.Auctions != null){
+  <p>text</p>
+@foreach (var item in Model.Auctions)
+{
+  <tr>
+    <td>@item.AuctionEnds.ToString()</td>
+    <td>@item.Offers.ToString()</td>
+    <td>@item.AuctionId.ToString()</td>
+    <td>@item.ProductId.ToString()</td>
+  </tr>
+
+}
+}
+</tbody>
