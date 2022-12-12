@@ -1,19 +1,19 @@
 version: '3.7' 
 
 services: 
-  bidding-publisher: 
+  bidding: 
     image: nicolaiskat/eksamen-bidding-publisher:latest
-    ports: 
+    expose: 
       - "80" 
     environment: 
       - AuctionBrokerHost=rabbitmq-dev 
     depends_on: 
       - rabbitmq-dev  
-      - auction-service 
+      - auction 
 
-  auction-service: 
-    image: nicolai/eksamen-auction-service:latest
-    ports: 
+  auction: 
+    image: nicolaiskat/eksamen-auction-service:latest
+    expose: 
       - "80" 
     environment:
       - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000
@@ -24,7 +24,7 @@ services:
       - rabbitmq-dev  
       - mongodb
 
-  item-service: 
+  catalog: 
     image: nicolaiskat/eksamen-item-service:latest 
     expose: 
       - "80" 
@@ -40,11 +40,12 @@ services:
     volumes: 
       - ./nginx.conf:/etc/nginx/nginx.conf:ro 
     depends_on: 
-      - item-service 
-      - bidding-publisher 
-      - auction-service
+      - catalog 
+      - bidding 
+      - auction
     ports:
       - "4000:4000"
+      
   rabbitmq-dev: 
     image: rabbitmq:management 
     ports: 
@@ -71,7 +72,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongodb_data_container:/data/db
+      - db:/data/db
 
 volumes:
-  mongodb_data_container:
+  db:
