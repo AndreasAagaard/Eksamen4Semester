@@ -1,0 +1,81 @@
+version: '3.7' 
+
+services: 
+  bidding: 
+    image: nicolaiskat/eksamen-bidding-publisher:latest
+    expose: 
+      - "80" 
+    environment: 
+      - AuctionBrokerHost=rabbitmq-dev 
+    depends_on: 
+      - rabbitmq-dev  
+      - auction 
+
+  auction: 
+    image: nicolaiskat/eksamen-auction-service:latest
+    expose: 
+      - "80" 
+    environment:
+      - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000
+      - AuctionBrokerHost=rabbitmq-dev 
+      - Database=AuctionHouse
+      - Collection=Auction
+    depends_on: 
+      - rabbitmq-dev  
+      - mongodb
+
+  catalog: 
+    image: nicolaiskat/eksamen-item-service:latest 
+    expose: 
+      - "80" 
+    environment:
+      - MongoConnectionString=mongodb://admin:password@mongodb:27017/?authSource=admin&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000
+      - Database=AuctionHouse
+      - Collection=Catalog
+    depends_on:
+      - mongodb
+
+  nginx: 
+    image: nginx:latest 
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro 
+    depends_on: 
+      - catalog 
+      - bidding 
+      - auction
+    ports:
+      - "4000:4000"
+      
+  rabbitmq-dev: 
+    image: rabbitmq:management 
+    ports: 
+      - "15672:15672" 
+      - "5672:5672"
+
+  loki: 
+    image: grafana/loki 
+    ports: 
+      - "3100:3100" 
+    command: -config.file=/etc/loki/local-config.yaml 
+  
+  grafana: 
+    image: grafana/grafana:latest 
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - grafana-storage:/var/lib/grafana
+
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    volumes:
+      - db:/data/db
+
+volumes:
+  db:
+  grafana-storage:
