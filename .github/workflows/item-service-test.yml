@@ -21,7 +21,9 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore
+        run: |
+          - cd ./item-solution/item-service
+          - dotnet restore
       - name: Build
         run: |
           - cd ./item-solution/item-service
