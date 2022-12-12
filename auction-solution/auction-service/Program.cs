@@ -11,6 +11,7 @@ builder.Services.AddHostedService<BidHandler>();
 builder.Services.AddSingleton<IAuctionService, AuctionService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<IRetryService, RetryService>();
+builder.Services.AddRazorPages();    
 
 var app = builder.Build();
 
@@ -27,5 +28,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapRazorPages(); 
 
 app.Run();

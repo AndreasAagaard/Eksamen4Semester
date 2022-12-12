@@ -38,6 +38,16 @@ public class AuctionService : IAuctionService
         return auction;    
     }
 
+    public async Task<List<AuctionItemDTO>?> GetAllAuctions()
+    {        
+        List<AuctionItemDTO>? auction = await _retry.RetryFunction(
+                _collection.Find(x => true).ToListAsync());        
+
+        if (auction == null)
+            return null;
+        return auction;    
+    }
+
     public async Task<Guid?> CreateAuction(AuctionItemDTO auction)
     {
         auction.AuctionId = Guid.NewGuid();

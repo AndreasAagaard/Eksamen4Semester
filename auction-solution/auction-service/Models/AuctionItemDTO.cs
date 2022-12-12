@@ -14,3 +14,9 @@ public class AuctionItemDTO
 
     public double GetHighestOffer() => (Offers.Any()) ? Offers.Last().Offer : 0;
 }
+
+public class result {
+    
+    public List<AuctionItemDTO> auctions {get; set;}
+    
+}
