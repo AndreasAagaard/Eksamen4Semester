@@ -8,13 +8,11 @@ public interface ICatalogService
 {
     Task<ProductItemDTO?> GetProduct(Guid productId);
     Task<Guid?> CreateProduct(ProductItemDTO item);
+    Task DeleteProduct(Guid id);
 }
 
 public class CatalogService : ICatalogService
 {
-    private int id = 1;
-    public List<ProductItemDTO> Catalog = new List<ProductItemDTO>();
-
     private ILogger<CatalogService> _logger;
     private IMongoDatabase _database;
     private IMongoCollection<ProductItemDTO> _collection;
@@ -51,6 +49,12 @@ public class CatalogService : ICatalogService
 
         var result = item.ProductId;
         return result;
+    }
+
+    public async Task DeleteProduct(Guid id)
+    {
+        var deleteFilter = Builders<ProductItemDTO>.Filter.Eq("_id", id);
+        await _collection.DeleteOneAsync(deleteFilter);
     }
 
     private void LogError(Exception ex) 

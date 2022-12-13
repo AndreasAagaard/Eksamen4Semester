@@ -25,7 +25,7 @@ public class ProductItemDTO
     public string? Description { get; set; }
     public int ShowRoomId { get; set; }
     public double Valuation { get; set; }
-
+    // Status bool
     [BsonRepresentation(BsonType.DateTime)]
     public DateTime AuktionStart { get; set; }
     public List<Uri> Images { get; set; } = new ();

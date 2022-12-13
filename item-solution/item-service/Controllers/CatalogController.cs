@@ -62,6 +62,17 @@ public class CatalogController : ControllerBase
         return Ok(new { result });
     }
 
+    [HttpDelete]
+    public async Task<IActionResult> DeleteProduct(Guid id)
+    {
+        _logger.LogInformation($"Delete for all products");
+        
+        await _retry.VoidRetryFunction(
+            _service.DeleteProduct(id)
+            );
+        return NoContent();
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateProduct(ProductItemDTO dto)
     {

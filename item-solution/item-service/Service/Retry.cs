@@ -54,6 +54,40 @@ public class RetryService
         }
     }
 
+    public async Task VoidRetryFunction(Task task)
+    {
+        int currentRetry = 0;
+        for (;;)
+        {
+            try
+            {
+                // Call external service.
+                await task;
+                _logger.LogInformation(nameof(task) + " executed");
+
+                // Return or break.
+                return;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogTrace($"AddCustomer exception: {ex.Message}");
+
+                currentRetry++;
+                if (currentRetry >= this.retryCount || !IsTransient(ex))
+                {
+                    _logger.LogCritical(ex, ex.Message);
+                    throw;
+                }
+                _logger.LogInformation("Trying again");
+            }
+
+            // Wait to retry the operation.
+            // Consider calculating an exponential delay here and
+            // using a strategy best suited for the operation and fault.
+            await Task.Delay(delay);
+        }
+    }
+
     private bool IsTransient(Exception ex)
     {
         _logger.LogInformation($"Checking if exception {ex.GetType().ToString()} is transient");
