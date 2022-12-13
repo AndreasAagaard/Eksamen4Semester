@@ -58,6 +58,45 @@ public class RetryService : IRetryService
         }
     }
 
+    public async Task<T?> RetryFunctionNoAsync<T>(Func<T?> task)
+    {
+        int currentRetry = 0;
+        for (;;)
+        {
+            try
+            {
+                // Call external service.
+                var result = task();
+                _logger.LogInformation(nameof(task) + " executed");
+
+                if (result == null) {
+                    _logger.LogInformation("No content");
+                    return default;
+                }
+
+                // Return or break.
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogTrace($"AddCustomer exception: {ex.Message}");
+
+                currentRetry++;
+                if (currentRetry >= this.retryCount || !IsTransient(ex))
+                {
+                    _logger.LogCritical(ex, ex.Message);
+                    throw;
+                }
+                _logger.LogInformation("Trying again");
+            }
+
+            // Wait to retry the operation.
+            // Consider calculating an exponential delay here and
+            // using a strategy best suited for the operation and fault.
+            await Task.Delay(delay);
+        }
+    }
+
     public async Task VoidRetryFunction(Task task)
     {
         int currentRetry = 0;

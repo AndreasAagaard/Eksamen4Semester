@@ -41,6 +41,15 @@ public class CatalogService : ICatalogService
         return products;    
     }
 
+    public async Task<List<ProductItemDTO>?> GetProductsByCategory(int catId)
+    {
+        var filter = Builders<ProductItemDTO>.Filter.Eq(x => x.ProductCategory, (ProductCategory)catId);
+
+        List<ProductItemDTO>? products = await _collection.Find(filter).ToListAsync();
+        
+        return products;    
+    }
+
     public async Task<Guid?> CreateProduct(ProductItemDTO item)
     {
         item.ProductId = Guid.NewGuid();

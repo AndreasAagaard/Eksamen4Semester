@@ -40,10 +40,29 @@ public class CatalogController : ControllerBase
         
         _logger.LogDebug($"Result of the request was: {result}");
         
-        return Ok(new { result });
+        return Ok( result );
     }
 
-    [HttpGet("GetProduct/")]
+    [HttpGet("bycategory/{catId}")]
+    public async Task<IActionResult> GetProduct(int catId)
+    {
+        _logger.LogInformation($"Request for products with category id: {catId}");
+        
+        List<ProductItemDTO>? result = await _retry.RetryFunction(
+            _service.GetProductsByCategory(catId)
+            );
+
+        if (result == null){
+            _logger.LogInformation($"Result of the request was: {result}");
+            return NoContent();
+        }
+        
+        _logger.LogDebug($"Result of the request was: {result}");
+        
+        return Ok( result );
+    }
+
+    [HttpGet("GetProduct")]
     public async Task<IActionResult> GetProduct()
     {
         _logger.LogInformation($"Request for all products");
@@ -59,7 +78,7 @@ public class CatalogController : ControllerBase
         
         _logger.LogDebug($"Result of the request was: {result}");
         
-        return Ok(new { result });
+        return Ok(result );
     }
 
     [HttpDelete]
@@ -85,6 +104,6 @@ public class CatalogController : ControllerBase
         if (result == null)
             return BadRequest();
         
-        return Ok(new { result });
+        return Ok(result);
     }
 }
