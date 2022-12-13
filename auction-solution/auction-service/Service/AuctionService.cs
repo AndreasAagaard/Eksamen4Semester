@@ -16,15 +16,17 @@ public class AuctionService : IAuctionService
 {
     private ILogger<IAuctionService> _logger;
     private IMongoDatabase _database;
+    private IConfiguration _config;
     private IMongoCollection<AuctionItemDTO> _collection;
     private readonly IRetryService _retry;
     public AuctionService(ILogger<IAuctionService> logger, MongoDBContext dbcontext,
-        IRetryService retry)
+        IRetryService retry, IConfiguration config)
     {
         _logger = logger;
         _database = dbcontext.Database;        
         _collection = dbcontext.Collection;
         _retry = retry;
+        _config = config;
     }
 
     public async Task<AuctionItemDTO?> GetAuction(Guid auctionId)
@@ -67,7 +69,7 @@ public class AuctionService : IAuctionService
 
          using HttpClient client = new() 
             { 
-                BaseAddress = new Uri(_config)
+                BaseAddress = new Uri(_config["CatalogHostName"])
             }; 
         List<ProductItemDTO> Catalog = await client.GetFromJsonAsync<List<ProductItemDTO>>("catalog/getproduct"); 
 
