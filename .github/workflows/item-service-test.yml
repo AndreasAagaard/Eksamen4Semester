@@ -22,16 +22,16 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: |
-          - cd ./item-solution/item-service
-          - dotnet restore
+          cd ./item-solution/item-service-test
+          dotnet restore
       - name: Build
         run: |
-          - cd ./item-solution/item-service
-          - dotnet build --configuration Release --no-restore
+          cd ./item-solution/item-service-test
+          dotnet build --configuration Release --no-restore
       - name: Test
         run: |
-          - cd ./item-solution/item-service
-          - dotnet test --no-restore --verbosity normal
+          cd ./item-solution
+          dotnet test --no-restore --verbosity normal
         
         
         
