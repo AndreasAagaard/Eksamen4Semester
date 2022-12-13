@@ -39,7 +39,7 @@ public class AuctionController : ControllerBase
     {
         _logger.LogInformation($"Request for all auctions");
         
-        List<AuctionItem>? result = await _retry.RetryFunction(
+        List<AuctionItemDTO>? result = await _retry.RetryFunction(
             _service.GetAllAuctions()
             );
 

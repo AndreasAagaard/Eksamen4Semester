@@ -8,6 +8,8 @@ namespace auction_service.Service;
 public interface IAuctionService
 {
     Task<AuctionItemDTO?> GetAuction(Guid auctionId);
+
+    Task<List<AuctionItemDTO>> GetAllAuctions();
     Task<Guid?> CreateAuction(AuctionItemDTO auction);
     Task AddOfferToAuction(Guid auctionId, OfferItemDTO offer);
 }
@@ -46,17 +48,6 @@ public class AuctionService : IAuctionService
         List<AuctionItemDTO>? auctions = await _retry.RetryFunction(
                 _collection.Find(x => true).ToListAsync());    
 
-        // foreach (var a in auctionsDTO){
-        //     ProductItemDTO proItem = Catalog.Where(x => x.ProductId == a.ProductId).First();
-        //     AuctionItem aucItem = new AuctionItem{ 
-        //         AuctionId = a.AuctionId,
-        //         Product = proItem,
-        //         AuctionEnds = a.AuctionEnds,
-        //         Offers = a.Offers
-        //     };
-        //     auctions.Add(aucItem);
-        // }
-
         if (auctions == null)
             return null;
         return auctions;    
@@ -71,7 +62,7 @@ public class AuctionService : IAuctionService
             { 
                 BaseAddress = new Uri(_config["CatalogHostName"])
             }; 
-        List<ProductItemDTO> Catalog = await client.GetFromJsonAsync<List<ProductItemDTO>>("catalog/getproduct"); 
+        // client.DeleteAsync($"catalog/{auction.Product.ProductId}");
 
         var result = auction.AuctionId;
         return result;

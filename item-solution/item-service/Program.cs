@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<CatalogService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<RetryService>();
- builder.Services.AddRazorPages();
+builder.Services.AddRazorPages();
 builder.Logging.ClearProviders(); 
 builder.Host.UseNLog(); 
 
