@@ -5,6 +5,8 @@ on:
       branches: [develop]
       types:
         - completed
+  pull_request:
+    branches: [release]
         
 env:
   DOCKER_USER: ${{ secrets.DOCKER_USER_N }}

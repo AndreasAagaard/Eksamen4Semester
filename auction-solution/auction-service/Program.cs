@@ -8,19 +8,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHostedService<BidHandler>();
-builder.Services.AddSingleton<AuctionService>();
+builder.Services.AddSingleton<IAuctionService, AuctionService>();
 builder.Services.AddTransient<MongoDBContext>();
-builder.Services.AddTransient<RetryService>();
+builder.Services.AddTransient<IRetryService, RetryService>();
 builder.Services.AddRazorPages();    
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
 
 app.UseHttpsRedirection();
 

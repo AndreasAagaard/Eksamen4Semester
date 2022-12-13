@@ -9,10 +9,10 @@ namespace auction_service.Controllers;
 public class AuctionController : ControllerBase
 {
     private readonly ILogger<AuctionController> _logger;
-    private readonly AuctionService _service;
-    private readonly RetryService _retry;
+    private readonly IAuctionService _service;
+    private readonly IRetryService _retry;
 
-    public AuctionController(ILogger<AuctionController> logger, AuctionService service, RetryService retry)
+    public AuctionController(ILogger<AuctionController> logger, IAuctionService service, IRetryService retry)
     {
         _logger = logger;
         _service = service;
@@ -20,7 +20,7 @@ public class AuctionController : ControllerBase
     }
 
     [HttpGet("GetAuction/{auctionId}")]
-    public async Task<IActionResult> GetProduct(Guid auctionId)
+    public async Task<IActionResult> GetAuction(Guid auctionId)
     {
         _logger.LogInformation($"Request for product with guid: {auctionId}");
         

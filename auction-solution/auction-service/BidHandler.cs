@@ -9,11 +9,11 @@ using auction_service.Models;
 public class BidHandler : BackgroundService
 {
     private readonly ILogger<BidHandler> _logger;
-    private readonly AuctionService _service;
+    private readonly IAuctionService _service;
     private readonly string mqhostname;
     private readonly IConnection _connection;
 
-    public BidHandler(ILogger<BidHandler> logger, AuctionService service, IConfiguration conf)
+    public BidHandler(ILogger<BidHandler> logger, IAuctionService service, IConfiguration conf)
     {
         _logger = logger;
         _service = service;
