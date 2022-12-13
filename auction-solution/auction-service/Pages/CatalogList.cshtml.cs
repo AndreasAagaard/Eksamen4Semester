@@ -7,10 +7,9 @@ namespace auction_service.Pages.CatalogList
 {
     public class CatalogListModel : PageModel
     {
-        public result _result {get; set;}
         public List<AuctionItemDTO>? Auctions {get; set;}
         
-        public async void OnGet() 
+        public async Task OnGet() 
         { 
             using HttpClient client = new() 
             { 
@@ -18,7 +17,7 @@ namespace auction_service.Pages.CatalogList
             }; 
     
             // Get the user information. 
-            Auctions = client.GetFromJsonAsync<List<AuctionItemDTO>>("Auction/GetAuction").Result; 
+            Auctions = await client.GetFromJsonAsync<List<AuctionItemDTO>>("Auction/GetAuction"); 
         }
     }
 }

@@ -31,7 +31,7 @@ public class AuctionController : ControllerBase
         if (result == null)
             return NoContent();
         
-        return Ok(new { result });
+        return Ok(result);
     }
 
     [HttpGet("GetAuction")]
@@ -39,7 +39,7 @@ public class AuctionController : ControllerBase
     {
         _logger.LogInformation($"Request for all auctions");
         
-        List<AuctionItemDTO>? result = await _retry.RetryFunction(
+        List<AuctionItem>? result = await _retry.RetryFunction(
             _service.GetAllAuctions()
             );
 
@@ -61,6 +61,6 @@ public class AuctionController : ControllerBase
         if (result == null)
             return BadRequest();
         
-        return Ok(new { result });
+        return Ok(result );
     }
 }
