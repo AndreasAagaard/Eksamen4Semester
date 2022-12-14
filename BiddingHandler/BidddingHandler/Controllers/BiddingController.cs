@@ -21,23 +21,15 @@ public class BiddingController : ControllerBase
     private readonly string mqhostname;
     private static int NextId;
 
-    /// <summary>
-    /// Inject a logger service into the controller on creation.
-    /// </summary>
-    /// <param name="logger">The logger service.</param>
     public BiddingController(ILogger<BiddingController> logger, IConfiguration configuration)
     {
         _logger = logger;
 
         mqhostname = configuration["AuctionBrokerHost"];
+        mqport = configuration["AuctionQueuePort"];
         _logger.LogInformation($"Using host at {mqhostname} for message broker");
     }
     
-    /// <summary>
-    /// Endpoint for recieving bids.
-    /// </summary>
-    /// <param name="bid">A bidding object</param>
-    /// <returns>On success - the bid object with bid id and received date.</returns>
     [HttpPost]
     public BiddingItemDTO? Post(BiddingItemDTO bid)
     {
