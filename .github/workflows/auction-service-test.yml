@@ -1,10 +1,10 @@
-name: Automatic test on item-service
+name: Automatic test on auction-service
 
 on:
   push:
     branches: [ "develop" ]
     paths:
-      - item-solution/item-service/**
+      - auction-solution/auction-service/**
 
 jobs:
   build:
@@ -22,15 +22,15 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: |
-          cd ./item-solution/item-service-test
+          cd ./auction-solution/auction-service-test
           dotnet restore
       - name: Build
         run: |
-          cd ./item-solution/item-service-test
+          cd ./auction-solution/auction-service-test
           dotnet build --configuration Release --no-restore
       - name: Test
         run: |
-          cd ./item-solution
+          cd ./auction-solution
           dotnet test --no-restore --verbosity normal
         
         
