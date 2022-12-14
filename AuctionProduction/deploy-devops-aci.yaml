@@ -1,0 +1,41 @@
+apiVersion: 2021-10-01
+location: eastus
+name: fantasticfourDevOpsGroup
+properties:
+  containers:
+  - name: loki
+    properties:
+      image: grafana/loki:main
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.0
+      ports:
+        - port: 3100
+  - name: grafana
+    properties:
+      image: grafana/grafana:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.0
+      ports:
+      - port: 3000
+  dnsConfig:
+    nameServers:
+    - 10.0.0.10 # DNS Server 1
+    - 10.0.0.11 # DNS Server 2
+    searchDomains: fantasticfour.dk
+  subnetIds:
+    - id: "/subscriptions/ffe3db90-1ad3-4faa-8f53-17036cf73e16/resourceGroups/FantasticFour/providers/Microsoft.Network/virtualNetworks/FantasticFourVNET/subnets/fantasticfour_devops_subnet"
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: 3100
+    - protocol: tcp
+      port: 3000
+  osType: Linux
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

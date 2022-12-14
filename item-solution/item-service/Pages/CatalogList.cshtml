@@ -1,0 +1,27 @@
+﻿ @page "/cataloglist" 
+ @model item_service.Pages.CatalogListModel
+ @{ 
+ } 
+  
+ <h1>Varekatalog</h1> 
+ <hr/> 
+ <p>Her kommer en tabel med varer ...</p> 
+ <table>
+  <tr>
+    <th>Id</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  @if(Model.Products != null){
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  }
+</table>

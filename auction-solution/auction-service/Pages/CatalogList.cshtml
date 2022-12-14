@@ -10,15 +10,15 @@
 
 @if (Model.Auctions != null){
   <p>text</p>
-@foreach (var item in Model.Auctions)
+@* @foreach (var item in Model.Auctions)
 {
   <tr>
     <td>@item.AuctionEnds.ToString()</td>
     <td>@item.Offers.ToString()</td>
     <td>@item.AuctionId.ToString()</td>
-    <td>@item.ProductId.ToString()</td>
+    <td>@item.Product.ProductId.ToString()</td>
   </tr>
 
-}
+} *@
 }
 </tbody>

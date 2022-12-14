@@ -1,4 +1,4 @@
-name: Push Item Service To Docker
+name: Push Bidding Service To Docker
 on:
   pull_request:
     branches: [release]
@@ -6,9 +6,9 @@ on:
 env:
   DOCKER_USER: ${{ secrets.DOCKER_USER }}
   DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-  IMAGE_NAME: eksamen-item-service:latest
-  PATH_TO_IMAGE: ./item-solution/item-service
-
+  IMAGE_NAME: eksamen-bidding-service:latest
+  PATH_TO_IMAGE: ./BiddingHandler/BidddingHandler
+  
 jobs:
   build-and-push-docker-image:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}

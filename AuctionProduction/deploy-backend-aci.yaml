@@ -1,0 +1,55 @@
+apiVersion: 2021-10-01
+location: eastus
+name: fantasticfourBackendGroup
+properties:
+  containers:
+  - name: mongodb
+    properties:
+      image: mongo:latest
+      command: ["mongod", "--dbpath=/data/auktionsdb", "--auth", "--bind_ip_all"]
+      ports:
+        - port: 27017
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      volumeMounts:
+      - mountPath: /data/auktionsdb/
+        name: db
+  - name: rabbitmq-dev
+    properties:
+      image: rabbitmq:management
+      ports:
+        - port: 15672
+        - port: 5672
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+  dnsConfig:
+    nameServers:
+    - 10.0.0.10 # DNS Server 1
+    - 10.0.0.11 # DNS Server 2
+    searchDomains: fantasticfour.dk
+  subnetIds:
+    - id: "/subscriptions/ffe3db90-1ad3-4faa-8f53-17036cf73e16/resourceGroups/FantasticFour/providers/Microsoft.Network/virtualNetworks/FantasticFourVNET/subnets/fantasticfour_backend_subnet"
+      name: default
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: 27017
+    - protocol: tcp
+      port: 15672
+    - protocol: tcp
+      port: 5672
+  osType: Linux
+  restartPolicy: Always
+  volumes:
+  - name: db
+    azureFile:
+      sharename: data
+      storageAccountName: fantasticfourstorage
+      storageAccountKey: Cpp079e8nqwyXcjae4GFd1mWwms+L5wE2h57mBZaZ9il2f3x9voJlEH+VQaewREAVwztjSLiRsSa+AStUzP1iA==
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

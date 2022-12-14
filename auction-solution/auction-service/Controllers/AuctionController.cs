@@ -31,7 +31,7 @@ public class AuctionController : ControllerBase
         if (result == null)
             return NoContent();
         
-        return Ok(new { result });
+        return Ok(result);
     }
 
     [HttpGet("GetAuction")]
@@ -53,7 +53,7 @@ public class AuctionController : ControllerBase
     public async Task<IActionResult> CreateAuction(AuctionItemDTO dto)
     {
         _logger.LogInformation($"Request for auction creation");
-        
+        dto.AuctionEnds = DateTime.Now.AddDays(dto.DaysToRun);
         Guid? result = await _retry.RetryFunction(
             _service.CreateAuction(dto)
             );
@@ -61,6 +61,6 @@ public class AuctionController : ControllerBase
         if (result == null)
             return BadRequest();
         
-        return Ok(new { result });
+        return Ok(result);
     }
 }

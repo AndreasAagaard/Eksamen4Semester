@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
-using auction_service.Models;
+using item_service.Models;
 
-namespace auction_service.Pages.CatalogList
+namespace item_service.Pages
 {
     public class CatalogListModel : PageModel
     {
-        public List<AuctionItemDTO>? Auctions {get; set;}
-        
-        public async Task OnGet() 
+         public List<ProductItemDTO>? Products {get; set;} 
+
+        public async void OnGet() 
         { 
             using HttpClient client = new() 
             { 
@@ -17,7 +16,7 @@ namespace auction_service.Pages.CatalogList
             }; 
     
             // Get the user information. 
-            Auctions = await client.GetFromJsonAsync<List<AuctionItemDTO>>("Auction/GetAuction"); 
-        }
+            Products = await client.GetFromJsonAsync<List<ProductItemDTO>>("Catalog/GetProduct"); 
+        } 
     }
 }

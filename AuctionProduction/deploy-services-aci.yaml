@@ -1,0 +1,87 @@
+apiVersion: '2021-10-01'
+location: eastus
+name: fantasticfourServicesGroup
+properties:
+  containers:
+  - name: catalog
+    properties:
+      image: nicolaiskat/eksamen-item-service:latest
+    environmentVariables:
+      - name: 'MongoConnectionString'
+        value: 'mongodb://admin:password@backend:27017/?authSource=admin'
+      - name: 'Database'
+        value: 'AuctionHouse'
+      - name: 'Collection'
+        value: 'Catalog'
+      - name: 'AuctionBrokerHost'
+        value: 'backend:5672'
+    resources:
+      requests:
+        cpu: 0.5
+        memoryInGb: 0.5
+      ports:
+      - port: 80
+  - name: auction
+    properties:
+      image: nicolaiskat/eksamen-auction-service:latest
+    environmentVariables:
+      - name: 'MongoConnectionString'
+        value: 'mongodb://admin:password@backend:27017/?authSource=admin'
+      - name: 'Database'
+        value: 'AuctionHouse'
+      - name: 'Collection'
+        value: 'Auction'
+      - name: 'AuctionBrokerHost'
+        value: 'backend:5672'
+    resources:
+      requests:
+        cpu: 0.5
+        memoryInGb: 0.5
+      ports:
+      - port: 81
+  - name: bidding
+    properties:
+      image: nicolaiskat/eksamen-bidding-service:latest
+    environmentVariables:
+      - name: 'AuctionBrokerHost'
+        value: 'backend:5672'
+    resources:
+      requests:
+        cpu: 0.5
+        memoryInGb: 0.5
+      ports:
+      - port: 82
+  - name: gateway
+    properties:
+      image: nginx:latest
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGb: 1.0
+      ports:
+      - port: 4000
+      volumeMounts:
+      - mountPath: /etc/nginx/
+      name: config
+  dnsConfig:
+    nameServers:
+    - 10.0.0.10 # DNS Server 1
+    - 10.0.0.11 # DNS Server 2
+    searchDomains: fantasticfour.dk
+  subnetIds:
+    - id: "/subscriptions/ffe3db90-1ad3-4faa-8f53-17036cf73e16/resourceGroups/fantasticfour/providers/Microsoft.Network/virtualNetworks/FantasticFourVNET/subnets/auktionshuset_services_subnet"
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: 4000
+  osType: Linux
+  restartPolicy: Always
+  volumes:
+  - name: config
+    azureFile:
+      sharename: config
+      storageAccountName: fantasticfourstorage
+      storageAccountKey: Cpp079e8nqwyXcjae4GFd1mWwms+L5wE2h57mBZaZ9il2f3x9voJlEH+VQaewREAVwztjSLiRsSa+AStUzP1iA==
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
