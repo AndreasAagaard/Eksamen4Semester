@@ -6,6 +6,7 @@ namespace auction_service.Service;
 
 public interface IRetryService {
     Task<T?> RetryFunction<T>(Task<T?> task);
+    Task<T?> RetryFunctionNoAsync<T>(Func<T?> task);
     Task VoidRetryFunction(Task task);
 }
 public class RetryService : IRetryService

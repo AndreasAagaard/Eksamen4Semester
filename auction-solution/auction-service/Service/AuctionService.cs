@@ -8,7 +8,6 @@ namespace auction_service.Service;
 public interface IAuctionService
 {
     Task<AuctionItemDTO?> GetAuction(Guid auctionId);
-
     Task<List<AuctionItemDTO>> GetAllAuctions();
     Task<Guid?> CreateAuction(AuctionItemDTO auction);
     Task AddOfferToAuction(Guid auctionId, OfferItemDTO offer);
@@ -21,6 +20,7 @@ public class AuctionService : IAuctionService
     private IConfiguration _config;
     private IMongoCollection<AuctionItemDTO> _collection;
     private readonly IRetryService _retry;
+    
     public AuctionService(ILogger<IAuctionService> logger, MongoDBContext dbcontext,
         IRetryService retry, IConfiguration config)
     {
@@ -56,16 +56,22 @@ public class AuctionService : IAuctionService
     public async Task<Guid?> CreateAuction(AuctionItemDTO auction)
     {
         auction.AuctionId = Guid.NewGuid();
-        await _retry.VoidRetryFunction(_collection.InsertOneAsync(auction));
+        await _retry.VoidRetryFunction(
+                _collection.InsertOneAsync(auction)
+            );
 
-         using HttpClient client = new() 
-            { 
-                BaseAddress = new Uri(_config["CatalogHostName"])
-            }; 
-        // client.DeleteAsync($"catalog/{auction.Product.ProductId}");
+        // HttpClient client = new HttpClient();
+        // var host = _config["CatalogHostName"];
+        // var response = await _retry.RetryFunction(
+        //                 client.DeleteAsync($"http://{host}/catalog/{auction.Product.ProductId}"));
 
-        var result = auction.AuctionId;
-        return result;
+        // if (!response.IsSuccessStatusCode)
+        // {
+        //     return null;
+        //     _logger.LogWarning("Could not delete product");
+        // }
+
+        return auction.AuctionId;
     }
 
     public async Task AddOfferToAuction(Guid auctionId, OfferItemDTO offer)

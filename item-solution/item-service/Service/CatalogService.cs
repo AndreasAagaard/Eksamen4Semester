@@ -62,7 +62,7 @@ public class CatalogService : ICatalogService
 
     public async Task DeleteProduct(Guid id)
     {
-        var deleteFilter = Builders<ProductItemDTO>.Filter.Eq("_id", id);
+        var deleteFilter = Builders<ProductItemDTO>.Filter.Eq(x => x.ProductId, id);
         await _collection.DeleteOneAsync(deleteFilter);
     }
 

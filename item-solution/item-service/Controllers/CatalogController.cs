@@ -81,14 +81,15 @@ public class CatalogController : ControllerBase
         return Ok(result );
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(Guid id)
     {
-        _logger.LogInformation($"Delete for all products");
+        _logger.LogInformation($"Delete for 1 product");
         
         await _retry.VoidRetryFunction(
             _service.DeleteProduct(id)
             );
+
         return NoContent();
     }
 
