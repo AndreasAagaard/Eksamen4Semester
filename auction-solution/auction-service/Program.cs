@@ -1,4 +1,10 @@
 using auction_service.Service;
+using NLog; 
+using NLog.Web; 
+
+var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger(); 
+logger.Debug("init main"); 
+try {
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +18,8 @@ builder.Services.AddSingleton<IAuctionService, AuctionService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<IRetryService, RetryService>();
 builder.Services.AddRazorPages();    
+builder.Logging.ClearProviders(); 
+builder.Host.UseNLog(); 
 
 var app = builder.Build();
 
@@ -32,3 +40,13 @@ app.MapControllers();
 app.MapRazorPages(); 
 
 app.Run();
+}
+catch (Exception ex) 
+{ 
+   logger.Error(ex, "Stopped program because of exception"); 
+   throw; 
+} 
+finally 
+ { 
+     NLog.LogManager.Shutdown(); 
+ } 

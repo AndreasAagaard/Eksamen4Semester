@@ -26,7 +26,6 @@ public class BiddingController : ControllerBase
         _logger = logger;
 
         mqhostname = configuration["AuctionBrokerHost"];
-        mqport = configuration["AuctionQueuePort"];
         _logger.LogInformation($"Using host at {mqhostname} for message broker");
     }
     

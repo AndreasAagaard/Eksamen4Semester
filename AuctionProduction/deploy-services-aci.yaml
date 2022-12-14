@@ -6,49 +6,55 @@ properties:
   - name: catalog
     properties:
       image: nicolaiskat/eksamen-item-service:latest
-    environmentVariables:
-      - name: 'MongoConnectionString'
-        value: 'mongodb://admin:password@backend:27017/?authSource=admin'
-      - name: 'Database'
-        value: 'AuctionHouse'
-      - name: 'Collection'
-        value: 'Catalog'
-      - name: 'AuctionBrokerHost'
-        value: 'backend:5672'
-    resources:
-      requests:
-        cpu: 0.5
-        memoryInGb: 0.5
+      environmentVariables:
+        - name: 'MongoConnectionString'
+          value: 'mongodb://admin:password@backend:27017/?authSource=admin'
+        - name: 'Database'
+          value: 'AuctionHouse'
+        - name: 'Collection'
+          value: 'Catalog'
+        - name: 'AuctionBrokerHost'
+          value: 'backend:5672'        
+        - name: 'ASPNETCORE_URLS'
+          value: 'http://+:80'
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGb: 0.5
       ports:
       - port: 80
   - name: auction
     properties:
       image: nicolaiskat/eksamen-auction-service:latest
-    environmentVariables:
-      - name: 'MongoConnectionString'
-        value: 'mongodb://admin:password@backend:27017/?authSource=admin'
-      - name: 'Database'
-        value: 'AuctionHouse'
-      - name: 'Collection'
-        value: 'Auction'
-      - name: 'AuctionBrokerHost'
-        value: 'backend:5672'
-    resources:
-      requests:
-        cpu: 0.5
-        memoryInGb: 0.5
+      environmentVariables:
+        - name: 'MongoConnectionString'
+          value: 'mongodb://admin:password@backend:27017/?authSource=admin'
+        - name: 'Database'
+          value: 'AuctionHouse'
+        - name: 'Collection'
+          value: 'Auction'
+        - name: 'AuctionBrokerHost'
+          value: 'backend:5672'        
+        - name: 'ASPNETCORE_URLS'
+          value: 'http://+:81'
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGb: 0.5
       ports:
       - port: 81
   - name: bidding
     properties:
       image: nicolaiskat/eksamen-bidding-service:latest
-    environmentVariables:
-      - name: 'AuctionBrokerHost'
-        value: 'backend:5672'
-    resources:
-      requests:
-        cpu: 0.5
-        memoryInGb: 0.5
+      environmentVariables:
+        - name: 'AuctionBrokerHost'
+          value: 'backend:5672'        
+        - name: 'ASPNETCORE_URLS'
+          value: 'http://+:82'
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGb: 0.5
       ports:
       - port: 82
   - name: gateway
@@ -62,7 +68,7 @@ properties:
       - port: 4000
       volumeMounts:
       - mountPath: /etc/nginx/
-      name: config
+        name: config
   dnsConfig:
     nameServers:
     - 10.0.0.10 # DNS Server 1
