@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "24d17271-c247-4912-bb30-137980c09eda",
+		"name": "AuctionHouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bidding",
+			"item": [
+				{
+					"name": "MakeNewBid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"AuctionId\": \"edcd91e7-5f01-40e9-b9ba-69622ba17771\",\n    \"UserId\": \"4dd5dd1e-3a1d-4934-bce6-fcb247be1df6\",\n    \"Offer\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/bidding",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"bidding"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auction",
+			"item": [
+				{
+					"name": "GetAllAuctions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/auction/getauction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auction",
+								"getauction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuctionById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/auction/getauction/edcd91e7-5f01-40e9-b9ba-69622ba17771",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auction",
+								"getauction",
+								"edcd91e7-5f01-40e9-b9ba-69622ba17771"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostAuction (fix)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Product\": {\n        \"ProductCategory\": 1,\n        \"Title\": \"Hey\",\n        \"Description\": \"Description\",\n        \"ShowRoomId\": 1,\n        \"Valuation\": 0.01,\n        \"AuktionStart\": \"2017-09-08T19:01:55.714942+03:00\"\n    },\n    \"DaysToEnd\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/auction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "GetCatalogAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/catalog/getproduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"catalog",
+								"getproduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/catalog/getproduct/6561db4d-25d2-4666-b0d2-f9bbf798009b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"catalog",
+								"getproduct",
+								"6561db4d-25d2-4666-b0d2-f9bbf798009b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCatalogByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/catalog/bycategory/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"catalog",
+								"bycategory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCatalog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productCategory\": 1,\n    \"title\": \"Hey\",\n    \"description\": \"Description\",\n    \"showRoomId\": 1,\n    \"valuation\": 0.01,\n    \"images\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/catalog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCatalogById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/catalog/335b893a-6630-4b80-a2a7-bb2f25a27b7f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"catalog",
+								"335b893a-6630-4b80-a2a7-bb2f25a27b7f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
