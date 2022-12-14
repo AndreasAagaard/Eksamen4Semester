@@ -75,16 +75,16 @@ public class ServiceTests
     //     return customer;
     // }
 
-    private AuctionItemDTO Auction() {
-        return new AuctionItemDTO{ 
-            AuctionId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a"),
-            ProductId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a"),
-            AuctionEnds = DateTime.Now,
-            Offers = new(),
-        };
-    }
+//     private AuctionItemDTO Auction() {
+//         return new AuctionItemDTO{ 
+//             AuctionId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a"),
+//             ProductId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a"),
+//             AuctionEnds = DateTime.Now,
+//             Offers = new(),
+//         };
+//     }
     
-}
+// }
 
 
 
