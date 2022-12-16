@@ -8,4 +8,12 @@ global using System;
 global using Microsoft.AspNetCore.Mvc;
 global using System.Net;
 global using Moq;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Configuration;
+global using Moq;
+global using MongoDB;
+global using MongoDB.Driver;
 

@@ -30,7 +30,7 @@ public class BiddingController : ControllerBase
     }
     
     [HttpPost]
-    public BiddingItemDTO? Post(BiddingItemDTO bid)
+    public BiddingItemDTO? PostBid(BiddingItemDTO bid)
     {
         _logger.LogInformation($"Post bid is running");
         bid.OfferId = NextId++;
