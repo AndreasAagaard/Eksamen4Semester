@@ -1,106 +1,78 @@
 namespace auction_service_test;
 
 [TestFixture]
-public class ServiceTests
+public class AuctionServiceTests
 {
-    private ILogger<AuctionController>? _logger;
-
+    private ILogger<IAuctionService> _logger;
+    private IConfiguration _config;
+    private IMongoDatabase _database;
+    private IMongoCollection<AuctionItemDTO> _collection;
+    private IRetryService _retry;
+    
     [SetUp]
     public void Setup()
     {
-        _logger = new Mock<ILogger<AuctionController>>().Object;
+        _logger = new Mock<ILogger<IAuctionService>>().Object;
+
+        var myConfiguration = new Dictionary<string, string>
+        {
+            {"MongoConnectionString", "http://mongodb.admin"},
+            {"AuctionBrokerHost", "http://testhost.local"},
+            {"Database", "database"},
+            {"Collection", "collection"},
+            {"CatalogHostName", "servicename"},
+        };
+
+        _config = new ConfigurationBuilder()
+            .AddInMemoryCollection(myConfiguration)
+            .Build();
     }
 
     [Test]
-    public async Task GetAuctionOk()
+    public async Task TestPostAuction_DTO_Valid()
     {
         // Arrange
-        //Guid auctionId = Guid.Parse("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-        Guid auctionId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a");
-        var mockService = new Mock<IAuctionService>();
-        mockService.Setup(x => x.GetAuction(auctionId))
-            .Returns(Task.FromResult<AuctionItemDTO?>(Auction()));
+        var product = NewProduct();
+        var auction = NewAuction(product);
+        var mockDbContext = new Mock<IMongoDBContext>();
+        mockDbContext.SetupProperty(x => x.Collection);
+        var mockCollection = new Mock<IMongoCollection<AuctionItemDTO>>(mockDbContext.Collection);
 
+        var task = mockDbContext.Object.Collection.InsertOneAsync(auction);
         var mockRetry = new Mock<IRetryService>();
+        mockRetry.Setup(svc => svc.VoidRetryFunction(task));
 
-        var controller = new AuctionController(_logger, mockService.Object, mockRetry.Object);
-
+        var service = new AuctionService(_logger, mockDbContext.Object, mockRetry.Object, _config);
+        
+        
         // Act
-        var actionResult = await controller.GetAuction(auctionId);
+        await service.CreateAuction(auction);
 
         // Assert
-        Assert.IsInstanceOf(typeof(IActionResult), actionResult);
-        Assert.IsInstanceOf(typeof(IActionResult), actionResult);
-
-        // Assert.IsNotNull(contentResult);
-        // Assert.AreEqual(HttpStatusCode.Accepted, contentResult.StatusCode);
-        // Assert.IsNotNull(contentResult.Content);
-        // Assert.AreEqual(auctionId, contentResult.Content.Id);
+        Assert.IsInstanceOf(typeof(AuctionItemDTO), auction);
+        Assert.AreEqual(auction.AuctionId, auction.AuctionId);
+        Assert.AreEqual(auction.AuctionEnds, auction.AuctionEnds);
     }
 
-
-    // [Test]
-    // public async Task TestBookingEndpoint_failure_posting()
-    // {
-    //     // Arrange
-    //     var bookingDTO = CreateBooking(new DateTime(2023,11,22, 14, 22, 32));
-    //     var mockRepo = new Mock<IBookingService>();
-    //     mockRepo.Setup(svc => svc.AddBooking(bookingDTO)).Returns(Task.FromException(new Exception()));
-    //     var controller = new BookingController(_logger, _configuration, mockRepo.Object);
-
-    //     // Act        
-    //     var result = await controller.PostBooking(bookingDTO);
-
-    //     // Assert
-    //     Assert.IsNull(result);
-    // }  
-
-    // [Test]
-    // public void TestCustomerCreated_Failure()
-    // {
-    //     // Arrange
-    //     Customer? customer = null;
-
-    //     // Act        
-    //     var service1 = new CustomerService(_logger);
-    //     var result = service1.CreateCustomer(customer);
-
-    //     // Assert
-    //     Assert.IsNull(result);
-    // }
-
-    // private Customer NewCustomer()
-    // {
-    //     var customer = new Customer("Name", "Phone number", "Email");
-    //     return customer;
-    // }
-
-//     private AuctionItemDTO Auction() {
-//         return new AuctionItemDTO{ 
-//             AuctionId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a"),
-//             ProductId = Guid.Parse("0b6f675e-7a1a-49d8-b535-352ceaa3fd6a"),
-//             AuctionEnds = DateTime.Now,
-//             Offers = new(),
-//         };
-//     }
-    
-// }
-
-
-
-
-
-    // //[HttpPost]
-    // public async Task<IActionResult> CreateAuction(AuctionItemDTO dto)
-    // {
-    //     _logger.LogInformation($"Request for auction creation");
-        
-    //     Guid? result = await _retry.RetryFunction(
-    //         _service.CreateAuction(dto)
-    //         );
-        
-    //     if (result == null)
-    //         return BadRequest();
-        
-    //     return Ok(new { result });
-    // }
+    private ProductItemDTO NewProduct() {
+        return new ProductItemDTO {
+            ProductId = Guid.NewGuid(),
+            ProductCategory = ProductCategory.Electronics,
+            Title = "Hey",
+            Description = "Description",
+            ShowRoomId = 1,
+            Valuation = 10,
+            AuktionStart = DateTime.Now
+        };
+    }
+    private AuctionItemDTO NewAuction(ProductItemDTO product) {
+        int daystorun = 3;
+        return new AuctionItemDTO{
+            AuctionId = Guid.NewGuid(),
+            Product = product,
+            AuctionEnds = product.AuktionStart.AddDays(daystorun),
+            DaysToRun = daystorun,
+            Offers = new()
+        };
+    }
+}

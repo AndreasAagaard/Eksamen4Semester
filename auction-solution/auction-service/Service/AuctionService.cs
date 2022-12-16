@@ -21,7 +21,7 @@ public class AuctionService : IAuctionService
     private IMongoCollection<AuctionItemDTO> _collection;
     private readonly IRetryService _retry;
     
-    public AuctionService(ILogger<IAuctionService> logger, MongoDBContext dbcontext,
+    public AuctionService(ILogger<IAuctionService> logger, IMongoDBContext dbcontext,
         IRetryService retry, IConfiguration config)
     {
         _logger = logger;
@@ -56,6 +56,7 @@ public class AuctionService : IAuctionService
     public async Task<Guid?> CreateAuction(AuctionItemDTO auction)
     {
         auction.AuctionId = Guid.NewGuid();
+        auction.AuctionEnds = auction.Product.AuktionStart.AddDays(auction.DaysToRun);
         await _retry.VoidRetryFunction(
                 _collection.InsertOneAsync(auction)
             );

@@ -57,7 +57,6 @@ public class AuctionController : ControllerBase
     public async Task<IActionResult> CreateAuction(AuctionItemDTO dto)
     {
         _logger.LogInformation($"Request for auction creation");
-        dto.AuctionEnds = DateTime.Now.AddDays(dto.DaysToRun);
         Guid? result = await _retry.RetryFunction(
             _service.CreateAuction(dto)
             );
