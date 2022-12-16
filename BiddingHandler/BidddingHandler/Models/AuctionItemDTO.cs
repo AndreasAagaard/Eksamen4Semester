@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace auction_service.Models;
+namespace BiddingHandler.Models;
 
 // public class AuctionItemDTO
 // {
@@ -22,7 +22,7 @@ public class AuctionItemDTO
     public ProductItemDTO Product { get; set; }
     public DateTime? AuctionEnds { get; set; } 
     public int DaysToRun { get; set; }  
-    public List<OfferItemDTO> Offers {get; set; } = new();
+    public List<BiddingItemDTO> Offers {get; set; } = new();
 
 
     public double GetHighestOffer() => (Offers.Any()) ? Offers.Last().Offer : 0;

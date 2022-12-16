@@ -1,35 +1,40 @@
-﻿ @page "/catalog/cataloglist" 
- @model MyApp.Namespace.CatalogListModel
- @{ 
+﻿@page "/auction/auctionlist" 
+@model MyApp.Namespace.AuctionListModel
+@{ 
+} 
 
- } 
-  
- <h1>Varekatalog</h1> 
- <hr/> 
- <p>Her kommer en tabel med varer ...</p> 
-
- <table>
+<h1>Varekatalog</h1> 
+<hr/> 
+<p>Her kommer en tabel med varer ...</p> 
+<table>
   <tr>
+    <th>Auction ID</th>
     <th>Product ID</th>
     <th>Product Category</th>
     <th>Title</th>
     <th>Description</th>
-    <th>ShowroomID</th>
     <th>Valuation</th>
-    <th>Auktion Start</th>
+    <th>Auction Start</th>
+    <th>Auction Ends</th>
+    <th>Auction Run Time</th>
+    <th>Highest bid</th>
   </tr>
-   @if(Model.Products != null){
-    @foreach (var item in Model.Products)
+   @if(Model.Auctions != null){
+    @foreach (var item in Model.Auctions)
     {
       <tr>
-        <td>@item.ProductId</td>
-        <td>@item.ProductCategory</td>
-        <td>@item.Title</td>
-        <td>@item.Description</td>
-        <td>@item.ShowRoomId</td>
-        <td>@item.Valuation</td>
-        <td>@item.AuktionStart</td>
+        <td>@item.AuctionId</td>
+        <td>@item.Product.ProductId</td>
+        <td>@item.Product.ProductCategory</td>
+        <td>@item.Product.Title</td>
+        <td>@item.Product.Description</td>
+        <td>@item.Product.Valuation</td>
+        <td>@item.Product.AuktionStart</td>
+        <td>@item.AuctionEnds</td>
+        <td>@item.DaysToRun</td>
+        <td>@item.GetHighestOffer()</td>
       </tr>
+
     }
    }
 </table>
