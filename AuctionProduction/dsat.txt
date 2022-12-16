@@ -7,3 +7,11 @@ Received invalid status code in the backend server’s HTTP response.
 As per the health probe configuration, 200-399 is the acceptable status code. 
 Either modify probe configuration or resolve backend issues. 
 To learn more visit - https://aka.ms/StatusCodeMismatch.
+
+https://documenter.getpostman.com/view/19720668/2s8YzXvKxq
+
+
+Received invalid status code: 404 in the backend server’s HTTP response. 
+As per the health probe configuration, 200-399 is the acceptable status code. 
+Either modify probe configuration or resolve backend issues. 
+To learn more visit - https://aka.ms/StatusCodeMismatch.

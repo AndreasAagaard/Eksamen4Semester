@@ -35,13 +35,7 @@ public class AuctionServiceTests
         var product = NewProduct();
         var auction = NewAuction(product);
         var mockDbContext = new Mock<IMongoDBContext>();
-        mockDbContext.SetupProperty(x => x.Collection);
-        var mockCollection = new Mock<IMongoCollection<AuctionItemDTO>>(mockDbContext.Collection);
-
-        var task = mockDbContext.Object.Collection.InsertOneAsync(auction);
         var mockRetry = new Mock<IRetryService>();
-        mockRetry.Setup(svc => svc.VoidRetryFunction(task));
-
         var service = new AuctionService(_logger, mockDbContext.Object, mockRetry.Object, _config);
         
         
