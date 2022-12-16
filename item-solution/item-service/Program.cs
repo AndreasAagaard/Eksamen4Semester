@@ -1,6 +1,7 @@
 using item_service.Service;
 using NLog; 
 using NLog.Web; 
+using Microsoft.Net.Http.Headers;
 
 var logger = 
 NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger(); 
@@ -18,6 +19,13 @@ builder.Services.AddSingleton<CatalogService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<RetryService>();
 builder.Services.AddRazorPages();
+builder.Services.AddHttpClient("gateway", client =>
+{
+   client.BaseAddress = new Uri("http://gateway:4000/");
+   client.DefaultRequestHeaders.Add(
+      HeaderNames.Accept, "application/json");
+}
+);
 builder.Logging.ClearProviders(); 
 builder.Host.UseNLog(); 
 

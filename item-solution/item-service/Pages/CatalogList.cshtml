@@ -1,27 +1,74 @@
 ﻿ @page "/catalog/cataloglist" 
- @model item_service.Pages.CatalogList.CatalogListModel
+ @model MyApp.Namespace.CatalogListModel
  @{ 
+
  } 
   
  <h1>Varekatalog</h1> 
  <hr/> 
  <p>Her kommer en tabel med varer ...</p> 
+
  <table>
   <tr>
-    <th>Id</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th>Product ID</th>
+    <th>Product Category</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>ShowroomID</th>
+    <th>Valuation</th>
+    <th>Auktion Start</th>
   </tr>
-  @if(Model.Products != null){
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  }
+   @if(Model.Products != null){
+    @foreach (var item in Model.Products)
+    {
+      <tr>
+        <td>@item.ProductId</td>
+        <td>@item.ProductCategory</td>
+        <td>@item.Title</td>
+        <td>@item.Description</td>
+        <td>@item.ShowRoomId</td>
+        <td>@item.Valuation</td>
+        <td>@item.AuktionStart</td>
+      </tr>
+    }
+   }
 </table>
+<style>
+  body {
+  font-family: 'lato', sans-serif;
+  background-color: whitesmoke;
+}
+
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+tr {
+  background-color: lightgrey;
+}
+
+table {
+  padding: 4px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 0px 10px;
+  border-radius: 5px;
+}
+
+th {
+  font-size: 1em;
+  padding: 3px;
+}
+
+td {
+  font-size: 0.8em;
+  padding: 3px;
+}
+tr td {
+  border-bottom: 1pt solid darkgrey;
+}
+</style>

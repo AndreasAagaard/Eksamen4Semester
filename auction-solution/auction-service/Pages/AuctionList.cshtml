@@ -1,0 +1,79 @@
+﻿@page "/auction/auctionlist" 
+@model MyApp.Namespace.AuctionListModel
+@{ 
+} 
+
+<h1>Varekatalog</h1> 
+<hr/> 
+<p>Her kommer en tabel med varer ...</p> 
+<table>
+  <tr>
+    <th>Auction ID</th>
+    <th>Product ID</th>
+    <th>Product Category</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Valuation</th>
+    <th>Auction Start</th>
+    <th>Auction Ends</th>
+    <th>Auction Run Time</th>
+    <th>Highest bid</th>
+  </tr>
+   @if(Model.Auctions != null){
+    @foreach (var item in Model.Auctions)
+    {
+      <tr>
+        <td>@item.AuctionId</td>
+        <td>@item.Product.ProductId</td>
+        <td>@item.Product.ProductCategory</td>
+        <td>@item.Product.Title</td>
+        <td>@item.Product.Description</td>
+        <td>@item.Product.Valuation</td>
+        <td>@item.Product.AuktionStart</td>
+        <td>@item.AuctionEnds</td>
+        <td>@item.DaysToRun</td>
+        <td>@item.GetHighestOffer()</td>
+      </tr>
+
+    }
+   }
+</table>
+<style>
+  body {
+  font-family: 'lato', sans-serif;
+  background-color: whitesmoke;
+}
+
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+td:hover{
+    background-color: #ddd;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+th {
+  font-size: 1em;
+  background-color: #d3d3d3;
+}
+
+td {
+  font-size: 0.8em;
+  background-color: #f5f5f5;
+}
+
+
+</style>
