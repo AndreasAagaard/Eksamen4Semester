@@ -1,1 +1,16 @@
-global using Xunit;
+global using NUnit.Framework;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.AspNetCore.Mvc;
+global using System;
+global using System.Net;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Configuration;
+global using MongoDB;
+global using MongoDB.Driver;
+global using Moq;
+global using BiddingHandler.Controllers;
+global using BiddingHandler.Models;

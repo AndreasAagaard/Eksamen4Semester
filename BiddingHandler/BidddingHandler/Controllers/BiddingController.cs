@@ -62,4 +62,6 @@ public class BiddingController : ControllerBase
         }
         return bid;
     }
+
+    public void ResetCounter() => NextId = 0; 
 }
