@@ -28,11 +28,11 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: |
-          cd ./BiddingHandler/BiddingHandlerTest
+          cd ./BiddingHandler/biddinghandlertests
           dotnet restore
       - name: Build
         run: |
-          cd ./BiddingHandler/BiddingHandlerTest
+          cd ./BiddingHandler/biddinghandlertests
           dotnet build --configuration Release --no-restore
       - name: Test
         run: |
