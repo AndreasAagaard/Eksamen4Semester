@@ -7,7 +7,6 @@ global using System.Net;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Threading.Tasks;
-global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.Configuration;
 global using MongoDB;
 global using MongoDB.Driver;
