@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "develop" ]
     paths:
-      - BiddingHandler/BidddingHandler/**
+      - BiddingHandler/**
 
 jobs:
   build:
@@ -22,11 +22,11 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: |
-          cd ./BiddingHandler/BidddingHandlerTest
+          cd ./BiddingHandler/BiddingHandlerTest
           dotnet restore
       - name: Build
         run: |
-          cd ./auction-solution/auction-service-test
+          cd ./BiddingHandler/BiddingHandlerTest
           dotnet build --configuration Release --no-restore
       - name: Test
         run: |

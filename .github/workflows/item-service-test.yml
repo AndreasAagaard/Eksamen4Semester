@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "develop" ]
     paths:
-      - item-solution/item-service/**
+      - item-solution/**
 
 jobs:
   build:
