@@ -1,6 +1,7 @@
 global using NUnit.Framework;
 global using auction_service.Service;
 global using auction_service.Models;
+global using auction_service;
 global using auction_service.Controllers;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;

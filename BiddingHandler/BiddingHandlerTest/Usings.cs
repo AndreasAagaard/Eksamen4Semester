@@ -13,3 +13,4 @@ global using MongoDB.Driver;
 global using Moq;
 global using BiddingHandler.Controllers;
 global using BiddingHandler.Models;
+global using BiddingHandler;
