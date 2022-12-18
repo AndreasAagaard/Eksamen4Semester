@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\bidddinghandler\bidddinghandler.csproj" />
+    <ProjectReference Include="..\BidddingHandler\BidddingHandler.csproj" />
   </ItemGroup>
 
 </Project>
