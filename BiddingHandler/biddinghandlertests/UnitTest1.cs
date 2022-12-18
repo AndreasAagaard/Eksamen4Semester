@@ -1,4 +1,4 @@
-namespace BiddingHandlerTest;
+namespace biddinghandlertests;
 
 [TestFixture]
 public class BiddingControllerTests
