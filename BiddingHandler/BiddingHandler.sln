@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiddingHandlerTest", "BiddingHandlerTest\BiddingHandlerTest.csproj", "{8ADE5509-8313-4F1C-9E87-D926F6D67E8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BidddingHandler", "BidddingHandler\BidddingHandler.csproj", "{44254724-33AF-4074-B5E6-82A7521300A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BidddingHandler", "BidddingHandler\BidddingHandler.csproj", "{FE87A58E-8F16-4782-8F7A-4928BCF0C7A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiddingHandlerTest", "BiddingHandlerTest\BiddingHandlerTest.csproj", "{51058EF7-1812-46DC-AE93-71200FEF7AA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +16,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8ADE5509-8313-4F1C-9E87-D926F6D67E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ADE5509-8313-4F1C-9E87-D926F6D67E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ADE5509-8313-4F1C-9E87-D926F6D67E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ADE5509-8313-4F1C-9E87-D926F6D67E8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE87A58E-8F16-4782-8F7A-4928BCF0C7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE87A58E-8F16-4782-8F7A-4928BCF0C7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE87A58E-8F16-4782-8F7A-4928BCF0C7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE87A58E-8F16-4782-8F7A-4928BCF0C7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44254724-33AF-4074-B5E6-82A7521300A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44254724-33AF-4074-B5E6-82A7521300A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44254724-33AF-4074-B5E6-82A7521300A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44254724-33AF-4074-B5E6-82A7521300A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51058EF7-1812-46DC-AE93-71200FEF7AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51058EF7-1812-46DC-AE93-71200FEF7AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51058EF7-1812-46DC-AE93-71200FEF7AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51058EF7-1812-46DC-AE93-71200FEF7AA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
