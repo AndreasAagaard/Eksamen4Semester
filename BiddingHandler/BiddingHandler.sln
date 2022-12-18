@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BidddingHandler", "BidddingHandler\BidddingHandler.csproj", "{44254724-33AF-4074-B5E6-82A7521300A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiddingHandlerTests", "BiddingHandlerTests\BiddingHandlerTests.csproj", "{C90200F8-765E-4055-A1A9-2E6443DC8535}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biddinghandlertests", "biddinghandlertests\biddinghandlertests.csproj", "{59E0EE21-BF50-41B5-8FB5-466C14731189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{44254724-33AF-4074-B5E6-82A7521300A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44254724-33AF-4074-B5E6-82A7521300A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44254724-33AF-4074-B5E6-82A7521300A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C90200F8-765E-4055-A1A9-2E6443DC8535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C90200F8-765E-4055-A1A9-2E6443DC8535}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C90200F8-765E-4055-A1A9-2E6443DC8535}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C90200F8-765E-4055-A1A9-2E6443DC8535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E0EE21-BF50-41B5-8FB5-466C14731189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E0EE21-BF50-41B5-8FB5-466C14731189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E0EE21-BF50-41B5-8FB5-466C14731189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E0EE21-BF50-41B5-8FB5-466C14731189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
