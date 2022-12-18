@@ -18,6 +18,10 @@ builder.Services.AddHostedService<BidHandler>();
 builder.Services.AddSingleton<IAuctionService, AuctionService>();
 builder.Services.AddTransient<MongoDBContext>();
 builder.Services.AddTransient<IRetryService, RetryService>();
+
+// For testing - virker ikke med interface i auctionservice
+builder.Services.AddSingleton<IMongoDBContext, MongoDBContext>();
+
 builder.Services.AddRazorPages();    
 builder.Services.AddHttpClient("gateway", client =>
 {

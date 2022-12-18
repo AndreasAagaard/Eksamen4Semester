@@ -14,7 +14,7 @@ properties:
         - name: 'Collection'
           value: 'Catalog'
         - name: 'AuctionBrokerHost'
-          value: 'backend:5672'        
+          value: 'backend'        
         - name: 'ASPNETCORE_URLS'
           value: 'http://+:80'
       resources:
@@ -34,7 +34,7 @@ properties:
         - name: 'Collection'
           value: 'Auction'
         - name: 'AuctionBrokerHost'
-          value: 'backend:5672'        
+          value: 'backend'        
         - name: 'ASPNETCORE_URLS'
           value: 'http://+:81'
       resources:
@@ -48,7 +48,7 @@ properties:
       image: nicolaiskat/eksamen-bidding-service:latest
       environmentVariables:
         - name: 'AuctionBrokerHost'
-          value: 'backend:5672'        
+          value: 'backend'        
         - name: 'ASPNETCORE_URLS'
           value: 'http://+:82'
       resources:

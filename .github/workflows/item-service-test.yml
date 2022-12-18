@@ -1,11 +1,16 @@
-name: Automatic test on item-service
+name: Automatic test on item-service and push to docker
 
 on:
   push:
     branches: [ "develop" ]
     paths:
-      - item-solution/item-service/**
-
+      - item-solution/**
+env:
+  DOCKER_USER: ${{ secrets.DOCKER_USER }}
+  DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+  IMAGE_NAME: eksamen-item-service:latest
+  PATH_TO_IMAGE: ./item-solution/item-service
+  
 jobs:
   build:
 
@@ -32,6 +37,34 @@ jobs:
         run: |
           cd ./item-solution
           dotnet test --no-restore --verbosity normal
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${DOCKER_USER}
+          password: ${DOCKER_TOKEN}
+
+      - name: Login to Github Packages
+        uses: docker/login-action@v2
+        with:
+          username: ${DOCKER_USER}
+          password: ${GITHUB_TOKEN}
+      
+      - name: Build image and push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: ${PATH_TO_IMAGE}
+          tags: ${DOCKER_USER}/{IMAGE_NAME}
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
         
         
         

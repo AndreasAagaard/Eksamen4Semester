@@ -60,6 +60,7 @@ public class BiddingController : ControllerBase
             _logger.LogError(ex.Message);
             return null;
         }
+
         return bid;
     }
 }

@@ -80,6 +80,6 @@ public class AuctionService : IAuctionService
         var filter = Builders<AuctionItemDTO>.Filter.Eq(x => x.AuctionId, auctionId);
         var update = Builders<AuctionItemDTO>.Update.AddToSet<OfferItemDTO>("Offers", offer);
 
-        await _retry.RetryFunction(_collection.UpdateOneAsync(filter, update));
+        await _retry.VoidRetryFunction(_collection.UpdateOneAsync(filter, update));
     }
 }

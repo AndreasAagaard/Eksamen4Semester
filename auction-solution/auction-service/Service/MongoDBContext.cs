@@ -11,11 +11,10 @@ namespace auction_service.Service;
 /// </summary>
 public interface IMongoDBContext
 {
-    Task RetryMongoConnection(string? connectionString);
     IMongoDatabase Database { get; set; }
     IMongoCollection<AuctionItemDTO> Collection { get; set; }
 }
-public class MongoDBContext
+public class MongoDBContext : IMongoDBContext
 {
     private ILogger<MongoDBContext> _logger;
     private IConfiguration _config;
@@ -43,7 +42,7 @@ public class MongoDBContext
     }
 
        
-    async Task RetryMongoConnection(string? connectionString)
+    private async Task RetryMongoConnection(string? connectionString)
     {
         int currentRetry = 0;
         for (;;)
