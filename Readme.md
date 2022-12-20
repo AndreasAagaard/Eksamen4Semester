@@ -1,4 +1,5 @@
 <img align="right" src="resources/micro-logo.png" width="200" />
+
 # Grøn & Olsen Digital Auktionshus
 * Eksamen 4. semester
 * Gruppe: FantasticFour
